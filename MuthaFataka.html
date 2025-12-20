@@ -51,10 +51,18 @@
 }
 
 /* Enhanced animations and visual effects */
+
+   /* Welcome / Hero section pink background */
 .hero-bg {
-    background: #ffffff;
+    background: linear-gradient(
+        135deg,
+        #fee2e2 0%,
+        #fecaca 50%,
+        #fca5a5 100%
+    );
     position: relative;
     overflow: hidden;
+
 }
 
 .hero-bg::before {
@@ -69,10 +77,6 @@
     z-index: 0;
 }
 
-.hero-bg > * {
-    position: relative;
-    z-index: 1;
-}
 
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -277,12 +281,14 @@ h1[id], h2[id], h3[id] { scroll-margin-top: 5.5rem; }
     <!-- Main Content -->
     <main>
 
-        <!-- Hero Section -->
-<section class="hero-bg container mx-auto px-6 py-16 md:py-24" data-aos="fade-up" data-aos-duration="1000">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
        <!-- Hero Section -->
-<section id="home" class="hero-bg container mx-auto px-6 py-16 md:py-24" data-aos="fade-up" data-aos-duration="1000">
+<section id="home" class="hero-bg container mx-auto px-6 py-16 md:py-24"
+         data-aos="fade-up" data-aos-duration="1000">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <!-- hero content here -->
+    </div>
+</section>
+
 
         <!-- Hero Text -->
         <div class="text-center md:text-left" data-aos="fade-right" data-aos-delay="200">
@@ -968,6 +974,7 @@ h1[id], h2[id], h3[id] { scroll-margin-top: 5.5rem; }
 </body>
 
 </html>
+
 
 
 
