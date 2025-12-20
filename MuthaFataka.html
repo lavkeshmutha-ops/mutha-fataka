@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutha Fataka</title>
+    <link rel="icon" href="Mutha Fataka.ico" type="image/x-icon">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Configure Tailwind to use Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- Custom styles for Inter font fallback -->
+    <style type="text/tailwindcss">
+        @layer base {
+            html {
+                font-family: 'Inter', sans-serif;
+            }
+            h1 {
+                @apply text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight;
+            }
+            h2 {
+                @apply text-3xl md:text-4xl font-bold text-gray-900;
+            }
+            h3 {
+                @apply text-xl font-semibold text-gray-900;
+            }
+        }
+        /* Simple modal fade-in */
+        .modal-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        /* Enhanced animations and visual effects */
+        .hero-bg {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 50%, #fca5a5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(220,38,38,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(220,38,38,0.1)"/><circle cx="60" cy="80" r="1" fill="rgba(220,38,38,0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(220,38,38,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #dc2626, #b91c1c, #991b1b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        /* Small pop animation for live status updates */
+        @keyframes statusPop {
+            0% { transform: scale(0.96); opacity: 0.9; }
+            60% { transform: scale(1.04); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .status-pop {
+            animation: statusPop 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Image hover/zoom and gallery effects */
+        .img-zoom {
+            transition: transform 450ms cubic-bezier(0.2, 0.9, 0.2, 1), filter 350ms ease, box-shadow 350ms ease;
+            will-change: transform;
+            cursor: pointer;
+        }
+        .img-zoom:hover {
+            transform: scale(1.06) rotate(-0.6deg);
+            filter: brightness(1.03) saturate(1.05);
+            box-shadow: 0 18px 32px rgba(0,0,0,0.18);
+        }
+        /* Slight staggered tilt for gallery items when hovered */
+        .gallery-img {
+            transform-origin: center;
+        }
+
+        /* Lightbox modal styles */
+        #lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 60;
+            padding: 2rem;
+            touch-action: none;
+        }
+        #lightbox-overlay.show {
+            display: flex;
+            animation: fadeIn 250ms ease-out;
+        }
+        #lightbox-overlay .lightbox-media img,
+        #lightbox-overlay .lightbox-media video {
+            max-width: 95%;
+            max-height: 85%;
+            border-radius: 12px;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.6);
+            transform: scale(0.98);
+            animation: lbScale 360ms cubic-bezier(0.2,1,0.22,1) forwards;
+            touch-action: pan-y;
+            background: rgba(0,0,0,0.02);
+        }
+        @keyframes lbScale {
+            to { transform: scale(1); }
+        }
+        /* Video card styles */
+        .video-card { position: relative; }
+        #lightbox-overlay .lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            color: #fff;
+            background: rgba(0,0,0,0.35);
+            border: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        #lightbox-overlay .lightbox-close:focus { outline: 3px solid rgba(255,255,255,0.18); }
+        #lightbox-overlay .lightbox-nav{ position:absolute; top:50%; transform:translateY(-50%) translateX(-8px); opacity:0; color:#fff; font-size:28px; background:rgba(0,0,0,0.25); border-radius:999px; width:56px; height:56px; min-width:56px; min-height:56px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition: transform 300ms cubic-bezier(.2,.9,.2,1), opacity 300ms ease; }
+        #lightbox-overlay.show .lightbox-nav{ opacity:1; transform:translateY(-50%) translateX(0); animation: navPop 300ms cubic-bezier(.2,.9,.2,1) both; }
+        @keyframes navPop { 0% { transform: translateY(-50%) translateX(0) scale(.96); opacity:0 } 60% { transform: translateY(-50%) translateX(0) scale(1.06); opacity:1 } 100% { transform: translateY(-50%) translateX(0) scale(1); opacity:1 } }
+        #lightbox-overlay .lightbox-prev{ left:16px; transition-delay: 90ms; }
+        #lightbox-overlay .lightbox-next{ right:16px; transition-delay: 180ms; }
+        #lightbox-overlay .lightbox-nav:focus { outline: 3px solid rgba(255,255,255,0.18); }
+        #lightbox-overlay .lightbox-nav:hover { transform: translateY(-50%) scale(1.08); }
+        @media (max-width:640px) {
+            #lightbox-overlay .lightbox-nav { width:64px; height:64px; font-size:30px; }
+            #lightbox-overlay .lightbox-close { top:12px; right:14px; padding:10px; }
+        }
+        h1[id], h2[id], h3[id] { scroll-margin-top: 5.5rem; }
+
+        /* Small fade utility (already used) */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Shop Logo/Name -->
+            <div class="flex items-center space-x-3">
+                <img src="Fataka_pics/Mutha%20Fataka.png" alt="Mutha Fataka Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='Fataka_pics/M_logo.svg';">
+                <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Mutha Fataka</a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+           <div class="hidden md:flex space-x-8">
+    <a href="#home" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Home</a>
+    <a href="#about" class="text-gray-600 hover:text-red-600 transition-colors duration-300">About</a>
+    <a href="#gallery" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Gallery</a>
+    <a href="#reviews" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Reviews</a>
+    <a href="#services" class="text-gray-600 hover:text-red-600 transition-colors duration-300">What We Offer</a>
+    <a href="#location" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Location</a>
+    <a href="#contact" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Contact</a>
+</div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-red-500">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+    <a href="#home" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Home</a>
+    <a href="#about" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">About</a>
+    <a href="#gallery" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Gallery</a>
+    <a href="#services" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">What We Offer</a>
+    <a href="#location" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Location</a>
+    <a href="#contact" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Contact</a>
+</div>
+
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+<section class="hero-bg container mx-auto px-6 py-16 md:py-24" data-aos="fade-up" data-aos-duration="1000">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Hero Text -->
+                <div class="text-center md:text-left" data-aos="fade-right" data-aos-delay="200">
+                    <h1 id="home" class="mb-6 text-gradient;">
+                        Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Mutha Fataka</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-10 animate-pulse">
+                        We are a trusted fireworks Sellers offering quality firecrackers for festivals and celebrations. Our focus is on safety, fair pricing, and reliable service for our customers.
+
+                    </p>
+                    <a href="#about" class="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-10 rounded-lg text-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 glow-effect">
+                        Learn More
+                    </a>
+                </div>
+                <!-- Hero Image -->
+                <div data-aos="fade-left" data-aos-delay="400">
+                    <img
+                        src="https://placehold.co/600x400/DC2626/FFFFFF?text=Quality+Goods"
+                        alt="A featured product from the shop"
+                        class="rounded-xl shadow-2xl w-full h-auto object-cover card-hover img-zoom"
+                        data-gallery-index="hero"
+                        onerror="this.src='https://placehold.co/600x400?text=Image+Not+Found'"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews -->
+<section class="bg-gray-100 py-20" data-aos="fade-up" data-aos-duration="800">
+    <div class="container mx-auto px-6">
+        <h2 id="reviews" class="text-center mb-12">Customer Reviews</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Review 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                <div class="text-yellow-500 mb-2">★★★★★</div>
+                <p class="text-gray-600 text-sm">
+                    This is the second year we are purchasing firecrackers from this shop.
+                    The prices are reasonable and there is a wide variety.
+                    Staff is friendly and extremely helpful.
+                </p>
+                <p class="mt-4 font-semibold text-gray-900">
+                    Ganeshan Gowander
+                </p>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                <div class="text-yellow-500 mb-2">★★★★★</div>
+                <p class="text-gray-600 text-sm">
+                    Wholesale rates compared to other shops in the area.
+                    Fast service with lots of variety, especially for children.
+                </p>
+                <p class="mt-4 font-semibold text-gray-900">
+                    Ravindra S
+                </p>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                <div class="text-yellow-500 mb-2">★★★★★</div>
+                <p class="text-gray-600 text-sm">
+                    Reasonable rates and quality crackers.
+                    Highly recommended for festival shopping.
+                </p>
+                <p class="mt-4 font-semibold text-gray-900">
+                    Hardeep Sangwan
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+        <!-- Featured Products Section - REMOVED -->
+
+        <!-- About Section -->
+        <section class="bg-white py-20 md:py-28" data-aos="fade-up" data-aos-duration="800">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <!-- About Text -->
+                    <div class="max-w-4xl mx-auto text-center md:text-left" data-aos="fade-right" data-aos-duration="700">
+                        <h2 id="about" class="mb-8">About Our Shop</h2>
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto md:mx-0">
+                            Mutha Fataka is a well-established fireworks store serving the local community with a strong commitment to quality and safety. We have built our reputation through honest practices, reasonable pricing, and a wide variety of firecrackers.
+                        <br><br>
+                       Our team focuses on providing reliable service while ensuring that all products are sold in compliance with applicable safety guidelines and regulations.
+
+
+                        </p>
+                        
+                        
+                        <!-- Social Links (Moved Here) -->
+                        <div class="mt-10">
+                            <h3 class="mb-4 text-lg font-semibold text-gray-700">Connect With Us:</h3>
+                            <div class="flex items-center space-x-6 justify-center md:justify-start">
+                                <!-- WhatsApp -->
+                                <!-- Replace 1234567890 with your number -->
+                                <a href="https://wa.me/919607020711"
+                                   class="flex items-center space-x-2 text-lg font-semibold text-green-600 hover:text-green-700 transition-colors duration-300"
+                                   target="_blank">
+                                    <i class="fa-brands fa-whatsapp text-3xl"></i>
+                                    <span>WhatsApp</span>
+                                </a>
+                                <!-- Facebook -->
+                                <a href="https://www.facebook.com/muthafataka" class="text-gray-500 hover:text-red-600 transition-colors duration-300" aria-label="Facebook">
+                                    <i class="fa-brands fa-facebook-f text-3xl"></i>
+                                </a>
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/muthafataka1974/" class="text-gray-500 hover:text-red-600 transition-colors duration-300" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram text-3xl"></i>
+                                </a>
+                                <!-- Justdial -->
+                                <a href="https://www.justdial.com/search?query=Mutha%20Fataka%20Stall" class="text-gray-500 hover:text-red-600 transition-colors duration-300" aria-label="Justdial" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-store text-3xl"></i>
+                                </a>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <!-- About Image -->
+                    <div data-aos="fade-left" data-aos-duration="700">
+                        <img 
+                            src="https://placehold.co/600x400/DC2626/FFFFFF?text=Image+of+Our+Shop" 
+                            alt="A photo of the Mutha Fataka shop" 
+                            class="rounded-xl shadow-2xl w-full h-auto object-cover img-zoom"
+                            data-gallery-index="about"
+                            onerror="this.src='https://placehold.co/600x400?text=Image+Not+Found'"
+                        >
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="bg-gray-100 py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <h2 id="gallery" class="text-center mb-8">Gallery</h2>
+                <!-- Removed all text content from here -->
+                <div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <!-- Image 1 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
+                            <img src="Fataka_pics/Fataka1.jpeg" alt="Fataka1" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="0" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                        </div>
+                        <!-- Image 2 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="200">
+                            <img src="Fataka_pics/Fataka2.jpeg" alt="Fataka2" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="1" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                        </div>
+                        <!-- Image 3 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="300">
+                            <img src="Fataka_pics/Fataka3.jpeg" alt="Fataka3" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="2" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                        </div>
+                        <!-- Image 4 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="400">
+                            <img src="Fataka_pics/Fataka4.jpeg" alt="Fataka4" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="3" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                        </div>
+                        <!-- Video 7: Fataka5 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="700">
+                            <video src="Fataka_pics/Fataka5.mp4" poster="Fataka_pics/Fataka5_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="4" data-title="Evening Sparklers" preload="metadata" controls playsinline aria-label="Fataka5 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 8: Fataka6 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="800">
+                            <video src="Fataka_pics/Fataka6.mp4" poster="Fataka_pics/Fataka6_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="5" data-title="Sky Rockets" preload="metadata" controls playsinline aria-label="Fataka6 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 9: Fataka7 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="900">
+                            <video src="Fataka_pics/Fataka7.mp4" poster="Fataka_pics/Fataka7_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="6" data-title="Colorful Fountains" preload="metadata" controls playsinline aria-label="Fataka7 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 10: Fataka8 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1000">
+                            <video src="Fataka_pics/Fataka8.mp4" poster="Fataka_pics/Fataka8_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="7" data-title="Festival Finale" preload="metadata" controls playsinline aria-label="Fataka8 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 11: Fataka9 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1100">
+                            <video src="Fataka_pics/Fataka9.mp4" poster="Fataka_pics/Fataka9_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="8" data-title="Family Moments" preload="metadata" controls playsinline aria-label="Fataka9 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 12: Fataka10 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1200">
+                            <video src="Fataka_pics/Fataka10.mp4" poster="Fataka_pics/Fataka10_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="9" data-title="Burst Collection" preload="metadata" controls playsinline aria-label="Fataka10 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 13: Fataka11 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1300">
+                            <video src="Fataka_pics/Fataka11.mp4" poster="Fataka_pics/Fataka11_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="10" data-title="Midnight Show" preload="metadata" controls playsinline aria-label="Fataka11 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 14: Fataka12 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1400">
+                            <video src="Fataka_pics/Fataka12.mp4" poster="Fataka_pics/Fataka12_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="11" data-title="Big Finale" preload="metadata" controls playsinline aria-label="Fataka12 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                        <!-- Video 15: Fataka13 -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1500">
+                            <video src="Fataka_pics/Fataka13.mp4" poster="Fataka_pics/Fataka13_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="12" data-title="Celebration Reel" preload="metadata" controls playsinline aria-label="Fataka13 video">Your browser does not support the video tag.</video>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- What We Offer Section -->
+        <section class="bg-gray-50 py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 id="services" class="mb-8">What We Offer</h2>
+                    <p class="text-lg text-gray-600 mb-16 max-w-3xl mx-auto">
+                       We offer a wide selection of firecrackers suitable for different types of celebrations, ensuring quality, safety, and value for our customers.
+
+                    </p>
+                    <!-- Service/Category Icons -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <!-- Category 1 -->
+                        <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+                            <svg class="w-16 h-16 text-red-600 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <h3 class="mb-2">Sparklers & Fountains</h3>
+                            <p class="text-gray-600 mt-2">Safe, colorful ground displays for family fun.</p>
+                        </div>
+                        <!-- Category 2 -->
+                        <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
+                            <svg class="w-16 h-16 text-red-600 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                            <h3 class="mb-2">Rockets & Aerials</h3>
+                            <p class="text-gray-600 mt-2">Spectacular sky displays for festivals.</p>
+                        </div>
+                        <!-- Category 3 -->
+                        <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+                            <svg class="w-16 h-16 text-red-600 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            <h3 class="mb-2">Fireworks Display Materials</h3>
+                            <p class="text-gray-600 mt-2">Professional setups for weddings and events.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location & Hours Section -->
+        <section class="bg-white py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="location" class="mb-6">Visit Us</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto"> We are located in the Pimpri-Chinchwad area and welcome customers to visit our shop.'</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Address Card -->
+                    <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 text-center" data-aos="fade-up" data-aos-duration="700">
+                        <i class="fa-solid fa-house text-red-600 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Our Address</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4 max-w-sm">
+                           Mutha Brothers, near PCMC School<br>
+                           Mohan Nagar, Pimpri Colony<br>
+                           Pimpri-Chinchwad, Maharashtra 411019
+                        </p>
+                        <p class="text-gray-800 font-semibold mb-4">Phone: +91 96070 20711</p>
+                        <a href="https://maps.app.goo.gl/CbBCGS8uSDHA65s28" target="_blank" class="inline-block text-red-600 font-semibold hover:text-red-700">📍 Get Directions →</a>
+                    </div>
+
+                    <!-- Business Hours Card -->
+                    <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 text-center" data-aos="fade-up" data-aos-duration="800">
+                        <i class="fa-solid fa-clock text-red-600 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Business Hours</h3>
+                        <ul class="text-gray-600 mb-4">
+                          <li class="mb-1">Mon — Sat: <span class="font-semibold text-gray-900">9:00 AM — 10:00 PM</span></li>
+                          <li>Sunday: <span class="font-semibold text-red-600">Closed</span></li>
+                        </ul>
+                        <div class="mt-2">
+                            <div id="store-time" class="text-sm text-gray-500">—</div>
+                            <div id="store-status" class="mt-1 font-semibold text-gray-900 transition-colors duration-300">Checking...</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Contact Card -->
+                    <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 text-center" data-aos="fade-up" data-aos-duration="900">
+                        <i class="fa-solid fa-envelope text-red-600 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Get In Touch</h3>
+                        <p class="text-gray-600 mb-4">For quick help: call or message us on WhatsApp</p>
+                        <div class="flex gap-3">
+                            <a href="tel:+919607020711" class="inline-block bg-red-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700">Call</a>
+                            <a href="#contact" class="inline-block bg-green-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-700">Contact →</a>
+                        </div>
+                    </div>
+
+                </div> 
+
+
+        <!-- Contact Section -->
+        <section class="bg-gray-50 py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <h2 id="contact" class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">Get In Touch</h2>
+                   <div class="max-w-3xl mx-auto bg-white p-10 rounded-2xl shadow-lg text-center">
+                <p class="text-gray-600 mb-6">We’re happy to help with product availability, pricing and wholesale enquiries.</p>
+                <div class="flex items-center justify-center gap-4">
+                    <a href="tel:+919607020711" class="inline-block bg-red-600 text-white px-6 py-3 rounded-md">Call</a>
+                    <a href="https://wa.me/919607020711" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md">WhatsApp</a>
+                </div>
+            </div>
+
+    <p class="text-base md:text-lg text-gray-500 pt-8">
+        Please contact us during business hours for the fastest response.
+    </p>
+
+</div> 
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox modal for gallery images and videos -->
+    <div id="lightbox-overlay" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close">✕</button>
+        <div class="lightbox-prev lightbox-nav" role="button" aria-label="Previous">‹</div>
+        <div class="lightbox-media" aria-live="polite" role="region"></div>
+        <div class="lightbox-next lightbox-nav" role="button" aria-label="Next">›</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12" data-aos="fade-up" data-aos-duration="900">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Mutha Fataka. All rights reserved.</p>
+            <p class="text-sm mt-3">
+    Fireworks are sold in accordance with local laws and safety regulations.
+    </p>
+
+            <div class="flex justify-center space-x-6 mt-4">
+                <!-- Text links removed, icon links are now in the 'About' section -->
+            </div>
+        </div>
+        <p class="text-xs text-gray-500 mt-2">
+    Reviews displayed are sourced from publicly available Google customer feedback.
+</p>
+
+    </footer>
+
+    <!-- "Added to Cart" Modal - REMOVED -->
+
+    <!-- JavaScript for Mobile Menu, Modal, and AOS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
+
+            // Mobile menu toggle
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Smooth scrolling with header offset (prevents sticky header overlap)
+            const headerEl = document.querySelector('header');
+            const headerOffset = () => (headerEl ? headerEl.offsetHeight : 64);
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (!href || href === '#') return;
+                    const target = document.querySelector(href);
+                    if (!target) return;
+                    e.preventDefault();
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset() - 18;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                });
+            });
+
+            // Add intersection observer for additional animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for custom animations
+            document.querySelectorAll('.card-hover, .img-zoom, .gallery-img').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Autoplay and sequential playback for gallery videos when they enter view
+            (function(){
+                const galleryVideos = Array.from(document.querySelectorAll('.gallery-video'));
+                if (!galleryVideos.length) return;
+
+                let currentAutoIndex = -1;
+
+                function pauseAllVideos(){
+                    galleryVideos.forEach(v => { try{ v.pause(); }catch(e){} });
+                }
+
+                function playAt(index, scroll=true){
+                    if (index < 0 || index >= galleryVideos.length) return;
+                    pauseAllVideos();
+                    const v = galleryVideos[index];
+                    if (scroll) { const card = v.closest('.video-card'); if (card && card.scrollIntoView) card.scrollIntoView({behavior:'smooth', block:'center'}); }
+                    // Mute for autoplay compatibility; user can unmute by clicking the video
+                    v.muted = true;
+                    const p = v.play(); if (p && p.catch) p.catch(()=>{});
+                    currentAutoIndex = index;
+                }
+
+                const vidObserver = new IntersectionObserver((entries)=>{
+                    entries.forEach(entry => {
+                        const v = entry.target;
+                        const idx = galleryVideos.indexOf(v);
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                            // Start this video and pause others
+                            playAt(idx, false);
+                        } else {
+                            // Pause if leaving view and it was the active one
+                            if (idx === currentAutoIndex) try{ v.pause(); }catch(e){}
+                        }
+                    });
+                }, {threshold:[0.6]});
+
+                galleryVideos.forEach((v, idx) => {
+                    vidObserver.observe(v);
+                    v.addEventListener('ended', () => { playAt(idx + 1); });
+                    // allow clicking to unmute
+                    v.addEventListener('click', () => { if (v.muted) v.muted = false; });
+                    // ensure only one plays
+                    v.addEventListener('play', () => {
+                        galleryVideos.forEach((o, j) => { if (o !== v) try{ o.pause(); }catch(e){} });
+                    });
+                });
+            })();
+
+        });
+    </script>
+
+    <script>
+    (function () {
+        const OPEN_HOUR = 9;   // 9 AM
+        const CLOSE_HOUR = 22; // 10 PM (24-hour format)
+
+        function formatTime(hour) {
+            const date = new Date();
+            date.setHours(hour, 0, 0, 0);
+            return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+        }
+
+        function updateStoreStatus() {
+            const now = new Date();
+            const currentHour = now.getHours();
+
+            const statusEl = document.getElementById("store-status");
+            const timeEl = document.getElementById("store-time");
+
+            if (!statusEl || !timeEl) return;
+
+            if (currentHour >= OPEN_HOUR && currentHour < CLOSE_HOUR) {
+                statusEl.textContent = "Open Now";
+                statusEl.classList.remove("text-red-600");
+                statusEl.classList.add("text-green-600");
+
+                timeEl.textContent = `Closes at ${formatTime(CLOSE_HOUR)}`;
+            } else {
+                statusEl.textContent = "Closed Now";
+                statusEl.classList.remove("text-green-600");
+                statusEl.classList.add("text-red-600");
+
+                timeEl.textContent = `Opens at ${formatTime(OPEN_HOUR)}`;
+            }
+
+            // Add a small pop animation whenever the status updates
+            statusEl.classList.add('status-pop');
+            setTimeout(() => statusEl.classList.remove('status-pop'), 700);
+        }
+
+        updateStoreStatus();
+        setInterval(updateStoreStatus, 60000); // update every minute
+    })();
+</script>
+
+<script>
+// Lightbox gallery functionality + keyboard, touch & accessibility improvements
+(function () {
+    const gallery = Array.from(document.querySelectorAll('.gallery-img, .gallery-video'));
+    const overlay = document.getElementById('lightbox-overlay');
+    const overlayMedia = overlay.querySelector('.lightbox-media');
+    const btnClose = overlay.querySelector('.lightbox-close');
+    const btnPrev = overlay.querySelector('.lightbox-prev');
+    const btnNext = overlay.querySelector('.lightbox-next');
+    let currentIndex = -1;
+    let lastFocused = null;
+
+    function focusTrap(e) {
+        if (!overlay.classList.contains('show')) return;
+        const focusable = [...overlay.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])')].filter(el=>!el.disabled);
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length-1];
+        if (e.key === 'Tab') {
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+    }
+
+    function show(index) {
+        if (index < 0 || index >= gallery.length) return;
+        const el = gallery[index];
+        lastFocused = document.activeElement;
+        overlayMedia.innerHTML = '';
+
+        if (el.classList.contains('gallery-img') || el.tagName === 'IMG') {
+            const img = document.createElement('img');
+            img.src = el.src;
+            img.alt = el.alt || 'Gallery image';
+            img.className = 'lightbox-image';
+            overlayMedia.appendChild(img);
+        } else if (el.classList.contains('gallery-video') || el.tagName === 'VIDEO') {
+            const vid = document.createElement('video');
+            // allow using poster/controls/autoplay when user opens
+            vid.src = el.currentSrc || el.src || (el.querySelector && el.querySelector('source') ? el.querySelector('source').src : '');
+            // use the generated poster from the gallery item if available
+            vid.poster = el.getAttribute('poster') || '';
+            vid.controls = true;
+            vid.autoplay = true;
+            vid.playsInline = true;
+            vid.muted = false;
+            vid.className = 'lightbox-image';
+            const titleText = el.getAttribute('data-title') || el.getAttribute('aria-label') || 'Gallery video';
+            vid.setAttribute('aria-label', titleText);
+            overlayMedia.appendChild(vid);
+
+            // try to play, ignore errors
+            const p = vid.play && vid.play(); if (p && p.catch) p.catch(()=>{});
+        }
+
+        overlay.classList.add('show');
+        overlay.setAttribute('aria-hidden', 'false');
+        overlay.setAttribute('role','dialog');
+        overlay.setAttribute('aria-modal','true');
+        overlay.setAttribute('tabindex','-1');
+        btnClose.focus();
+        currentIndex = index;
+    }
+
+    function hide() {
+        // pause any playing video
+        const v = overlayMedia.querySelector('video'); if (v && !v.paused) try{ v.pause(); }catch(e){}
+        overlay.classList.remove('show');
+        overlay.setAttribute('aria-hidden', 'true');
+        overlayMedia.innerHTML = '';
+        currentIndex = -1;
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    gallery.forEach((el, idx) => {
+        el.tabIndex = 0;
+        el.addEventListener('click', () => { show(idx); });
+        el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(idx); } });
+    });
+
+    btnClose.addEventListener('click', hide);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) hide(); });
+
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); show((currentIndex - 1 + gallery.length) % gallery.length); });
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); show((currentIndex + 1) % gallery.length); });
+
+    document.addEventListener('keydown', (e) => {
+        if (!overlay.classList.contains('show')) return;
+        if (e.key === 'Escape') hide();
+        if (e.key === 'ArrowLeft') show((currentIndex - 1 + gallery.length) % gallery.length);
+        if (e.key === 'ArrowRight') show((currentIndex + 1) % gallery.length);
+        focusTrap(e);
+    });
+
+    // Touch swipe support for mobile / iOS
+    let touchStartX = 0, touchStartY = 0;
+    overlayMedia.addEventListener('touchstart', (e) => { const t = e.changedTouches[0]; touchStartX = t.clientX; touchStartY = t.clientY; }, {passive:true});
+    overlayMedia.addEventListener('touchend', (e) => {
+        const t = e.changedTouches[0]; const dx = t.clientX - touchStartX; const dy = t.clientY - touchStartY; const absDx = Math.abs(dx), absDy = Math.abs(dy);
+        if (absDx > 40 && absDx > absDy) { if (dx > 0) show((currentIndex - 1 + gallery.length) % gallery.length); else show((currentIndex + 1) % gallery.length); }
+    }, {passive:true});
+
+    // Also make hero and about images open in lightbox when clicked (if present)
+    const hero = document.querySelector('[data-gallery-index="hero"]');
+    const about = document.querySelector('[data-gallery-index="about"]');
+    if (hero) hero.addEventListener('click', () => { lastFocused = document.activeElement; overlayMedia.innerHTML = '<img src="'+hero.src+'" alt="Featured image" class="lightbox-image">'; overlay.classList.add('show'); overlay.setAttribute('aria-hidden','false'); overlay.setAttribute('role','dialog'); overlay.setAttribute('aria-modal','true'); overlay.setAttribute('tabindex','-1'); btnClose.focus(); currentIndex = -1; });
+    if (about) about.addEventListener('click', () => { lastFocused = document.activeElement; overlayMedia.innerHTML = '<img src="'+about.src+'" alt="About image" class="lightbox-image">'; overlay.classList.add('show'); overlay.setAttribute('aria-hidden','false'); overlay.setAttribute('role','dialog'); overlay.setAttribute('aria-modal','true'); overlay.setAttribute('tabindex','-1'); btnClose.focus(); currentIndex = -1; });
+
+    // Refresh AOS after DOM updates
+    if (window.AOS) setTimeout(() => AOS.refresh(), 350);
+})();
+</script>
+
+<script>
+(function(){
+    // generate posters from video frames for gallery videos
+    const videos = Array.from(document.querySelectorAll('.gallery-video'));
+    if (!videos.length) return;
+    videos.forEach(v => {
+        if (v.dataset.posterGenerated) return;
+        function captureFrame() {
+            try {
+                const w = v.videoWidth || 640;
+                const h = v.videoHeight || 360;
+                if (!w || !h) return;
+                const side = Math.min(w,h);
+                const canvas = document.createElement('canvas');
+                canvas.width = side;
+                canvas.height = side;
+                const ctx = canvas.getContext('2d');
+                // center-crop the video frame to a square
+                const sx = Math.max(0, (w - side) / 2);
+                const sy = Math.max(0, (h - side) / 2);
+                ctx.drawImage(v, sx, sy, side, side, 0, 0, side, side);
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                v.setAttribute('poster', dataUrl);
+                v.dataset.posterGenerated = '1';
+                v.pause();
+                try { v.currentTime = 0; } catch(e){}
+            } catch(e) {
+                console.warn('Poster generation failed for', v, e);
+            }
+        }
+        function seekAndCapture() {
+            // seek to ~1s or a quarter of duration
+            const dur = v.duration || 0;
+            const t = (dur > 2 ? Math.min(1, dur/4) : 0.2);
+            function onSeeked() {
+                captureFrame();
+                v.removeEventListener('seeked', onSeeked);
+            }
+            v.addEventListener('seeked', onSeeked);
+            try { v.currentTime = t; } catch(e) { setTimeout(captureFrame, 350); }
+        }
+        if (v.readyState >= 1 && v.videoWidth) {
+            seekAndCapture();
+        } else {
+            v.addEventListener('loadedmetadata', seekAndCapture, {once:true});
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
