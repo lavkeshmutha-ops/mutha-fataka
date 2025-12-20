@@ -50,10 +50,13 @@
         }
         /* Enhanced animations and visual effects */
         .hero-bg {
-            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 50%, #fca5a5 100%);
-            position: relative;
-            overflow: hidden;
-        }
+           .hero-bg {
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+        
         .hero-bg::before {
             content: '';
             position: absolute;
@@ -163,6 +166,16 @@ animation: float 20s ease-in-out infinite;
             cursor: pointer;
             font-size: 18px;
         }
+
+        .hero-bg::before {
+    z-index: 0;
+}
+
+.hero-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
         #lightbox-overlay .lightbox-close:focus { outline: 3px solid rgba(255,255,255,0.18); }
         #lightbox-overlay .lightbox-nav{ position:absolute; top:50%; transform:translateY(-50%) translateX(-8px); opacity:0; color:#fff; font-size:28px; background:rgba(0,0,0,0.25); border-radius:999px; width:56px; height:56px; min-width:56px; min-height:56px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition: transform 300ms cubic-bezier(.2,.9,.2,1), opacity 300ms ease; }
         #lightbox-overlay.show .lightbox-nav{ opacity:1; transform:translateY(-50%) translateX(0); animation: navPop 300ms cubic-bezier(.2,.9,.2,1) both; }
@@ -184,13 +197,15 @@ animation: float 20s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-white text-gray-800">
+
 
     <!-- Header & Navigation -->
     <header class="bg-white shadow-lg sticky top-0 z-40">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Shop Logo/Name -->
-            <div class="flex items-center space-x-3">
+           <div class="hidden md:flex flex-wrap justify-end gap-6">
+
                 <img src="Logo.jpeg" alt="Mutha Fataka Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='Fataka_pics/M_logo.svg';">
                 <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Mutha Fataka</a>
             </div>
@@ -920,6 +935,7 @@ animation: float 20s ease-in-out infinite;
 </body>
 
 </html>
+
 
 
 
