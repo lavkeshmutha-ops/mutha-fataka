@@ -546,17 +546,20 @@ h1[id], h2[id], h3[id] {
                         </div>
                     </div>
                     <!-- About Image -->
-                    <div data-aos="fade-left" data-aos-duration="700">
-                        <img
-                            src="About.jpeg"
-                            alt="A photo of the Mutha Fataka shop"
-                            class="rounded-xl shadow-2xl w-full h-auto object-cover img-zoom"
-                            data-gallery-index="about"
-                            onerror="this.src='https://placehold.co/600x400?text=Image+Not+Found'"
-                        >
-                    </div>
-                </div>
-            </div>
+                   <div style="flex: 1; min-width: 300px;">
+    <div data-aos="fade-left" data-aos-duration="700">
+        <img
+            src="About.jpeg"
+            alt="A photo of the Mutha Fataka shop"
+            class="rounded-xl shadow-2xl w-full h-auto object-cover img-zoom"
+            style="border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); display: block; width: 100%; height: auto;"
+            data-gallery-index="about"
+            onerror="this.src='https://placehold.co/600x400?text=Shop+Image+Coming+Soon'"
+        >
+    
+
+          </div>
+     </div>
         </section>
 
         <!-- Gallery Section -->
@@ -630,112 +633,223 @@ h1[id], h2[id], h3[id] {
             </div>
         </section>
         
-        <!-- What We Offer Section -->
-        <section class="bg-gray-50 py-20 md:py-28">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 id="services" class="mb-8">What We Offer</h2>
-                    <p class="text-lg text-gray-600 mb-16 max-w-3xl mx-auto">
-                       We offer a wide selection of firecrackers suitable for different types of celebrations, ensuring quality, safety, and value for our customers.
+       <section id="services" class="relative bg-white py-24 overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="gray" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+    </div>
 
-                    </p>
-                    <!-- Service/Category Icons -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                        <!-- Category 1 -->
-                        <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
-                            <svg class="w-16 h-16 text-red-600 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                            <h3 class="mb-2">Sparklers & Fountains</h3>
-                            <p class="text-gray-600 mt-2">Safe, colorful ground displays for family fun.</p>
-                        </div>
-                        <!-- Category 2 -->
-                        <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
-                            <svg class="w-16 h-16 text-red-600 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                            <h3 class="mb-2">Rockets & Aerials</h3>
-                            <p class="text-gray-600 mt-2">Spectacular sky displays for festivals.</p>
-                        </div>
-                        <!-- Category 3 -->
-                        <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
-                            <svg class="w-16 h-16 text-red-600 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                            <h3 class="mb-2">Fireworks Display Materials</h3>
-                            <p class="text-gray-600 mt-2">Professional setups for weddings and events.</p>
-                        </div>
-                    </div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-red-600 font-bold uppercase tracking-widest text-sm">Premium Selection</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mt-3 mb-6">What We Offer</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Elevate your celebrations with our curated range of high-quality products. We prioritize 
+                <span class="text-gray-900 font-semibold border-b-2 border-red-500">safety, brilliance, and value</span> 
+                for every festive occasion.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <div class="group relative p-10 bg-gray-50 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-2xl border border-transparent hover:border-red-100" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 transition-colors duration-500">
+                    <svg class="w-10 h-10 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Sparklers & Fountains</h3>
+                <p class="text-gray-600 leading-relaxed">Vibrant ground displays designed for close-range family enjoyment. High-intensity colors with low smoke options.</p>
+                <div class="mt-6 flex items-center text-red-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                    Explore Category <span class="ml-2">→</span>
                 </div>
             </div>
-        </section>
 
-        <!-- Location & Hours Section -->
-        <section class="bg-white py-20 md:py-28">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 id="location" class="mb-6">Visit Us</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto"> We are located in the Pimpri-Chinchwad area and welcome customers to visit our shop.'</p>
+            <div class="group relative p-10 bg-gray-50 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-2xl border border-transparent hover:border-red-100" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-orange-500 transition-colors duration-500">
+                    <svg class="w-10 h-10 text-orange-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
                 </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Rockets & Aerials</h3>
+                <p class="text-gray-600 leading-relaxed">From single shots to multi-color shells. Experience breathtaking sky-high bursts that light up your entire festival night.</p>
+                <div class="mt-6 flex items-center text-orange-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                    Explore Category <span class="ml-2">→</span>
+                </div>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Address Card -->
-                    <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 text-center" data-aos="fade-up" data-aos-duration="700">
-                        <i class="fa-solid fa-house text-red-600 text-3xl mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-3">Our Address</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4 max-w-sm">
-                           Mutha Brothers, near PCMC School<br>
-                           Mohan Nagar, Pimpri Colony<br>
-                           Pimpri-Chinchwad, Maharashtra 411019
+            <div class="group relative p-10 bg-gray-50 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-2xl border border-transparent hover:border-red-100" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-20 h-20 bg-yellow-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-yellow-500 transition-colors duration-500">
+                    <svg class="w-10 h-10 text-yellow-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Event Packages</h3>
+                <p class="text-gray-600 leading-relaxed">Specialized collections for weddings, corporate events, and grand celebrations. Curated for maximum visual impact.</p>
+                <div class="mt-6 flex items-center text-yellow-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                    Explore Category <span class="ml-2">→</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+      <section id="location" class="bg-gray-50 py-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Visit Our Shop</h2>
+            <div class="w-20 h-1.5 bg-red-600 mx-auto rounded-full mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Conveniently located in the heart of Pimpri-Chinchwad. We look forward to serving you!
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+            
+            <div class="space-y-6" data-aos="fade-right">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start space-x-6 hover:shadow-md transition-shadow">
+                    <div class="bg-red-50 p-4 rounded-2xl">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Location</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Mutha Fataka, Pimpri-Chinchwad Area,<br>
+                            Pune, Maharashtra, India
                         </p>
-                        <p class="text-gray-800 font-semibold mb-4">Phone: +91 96070 20711</p>
-                        <a href="https://maps.app.goo.gl/CbBCGS8uSDHA65s28" target="_blank" class="inline-block text-red-600 font-semibold hover:text-red-700">📍 Get Directions →</a>
+                        <a href="https://maps.google.com" target="_blank" class="inline-block mt-4 text-red-600 font-semibold hover:underline">Get Directions →</a>
                     </div>
+                </div>
 
-                    <!-- Business Hours Card -->
-                    <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 text-center" data-aos="fade-up" data-aos-duration="800">
-                        <i class="fa-solid fa-clock text-red-600 text-3xl mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-3">Business Hours</h3>
-                        <ul class="text-gray-600 mb-4">
-                          <li class="mb-1">Mon — Sun: <span class="font-semibold text-gray-900">10:00 AM — 9:30 PM</span></li>
-                          
-                        </ul>
-                        <div class="mt-2">
-                            <div id="store-time" class="text-sm text-gray-500">—</div>
-                            <div id="store-status" class="mt-1 font-semibold text-gray-900 transition-colors duration-300">Checking...</div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start space-x-6 hover:shadow-md transition-shadow">
+                    <div class="bg-blue-50 p-4 rounded-2xl">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="w-full">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Business Hours</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-gray-600">
+                                <span>Mon - Sat</span>
+                                <span class="font-medium text-gray-900">9:00 AM - 9:00 PM</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600 border-t pt-2">
+                                <span>Sunday</span>
+                                <span class="font-medium text-gray-900">10:00 AM - 6:00 PM</span>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Quick Contact Card -->
-                    <div class="flex flex-col items-center p-8 bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 text-center" data-aos="fade-up" data-aos-duration="900">
-                        <i class="fa-solid fa-envelope text-red-600 text-3xl mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-3">Get In Touch</h3>
-                        <p class="text-gray-600 mb-4">For quick help: call or message us on WhatsApp</p>
-                        <div class="flex gap-3">
-                            <a href="tel:+919607020711" class="inline-block bg-red-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700">Call</a>
-                            <a href="#contact" class="inline-block bg-green-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-700">Contact →</a>
-                        </div>
-                    </div>
-
-                </div> 
-
-
-        <!-- Contact Section -->
-        <section class="bg-gray-50 py-20 md:py-28">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-6xl mx-auto">
-                    <h2 id="contact" class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">Get In Touch</h2>
-                   <div class="max-w-3xl mx-auto bg-white p-10 rounded-2xl shadow-lg text-center">
-                <p class="text-gray-600 mb-6">We’re happy to help with product availability, pricing and wholesale enquiries.</p>
-                <div class="flex items-center justify-center gap-4">
-                    <a href="tel:+919607020711" class="inline-block bg-red-600 text-white px-6 py-3 rounded-md">Call</a>
-                    <a href="https://wa.me/919607020711" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md">WhatsApp</a>
                 </div>
             </div>
 
-    <p class="text-base md:text-lg text-gray-500 pt-8">
-        Please contact us during business hours for the fastest response.
-    </p>
+            <div class="rounded-3xl overflow-hidden shadow-lg border-4 border-white h-full min-h-[400px]" data-aos="fade-left">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121058.92836561217!2d73.7081708821415!3d18.63842813583688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9e76c666321%3A0x629633e66a70087!2sPimpri-Chinchwad%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
 
-</div> 
+        </div>
+    </div>
+</section>
 
+               <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 text-center border border-gray-100" data-aos="fade-up" data-aos-duration="700">
+    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+        <i class="fa-solid fa-location-dot text-red-600 text-3xl"></i>
+    </div>
+
+    <h3 class="text-2xl font-bold text-gray-900 mb-3">Our Location</h3>
+    
+    <address class="not-italic text-gray-600 leading-relaxed mb-6">
+        <span class="font-semibold text-gray-800">Mutha Brothers</span><br>
+        Near PCMC School, Mohan Nagar<br>
+        Pimpri Colony, Pimpri-Chinchwad<br>
+        Maharashtra 411019
+    </address>
+
+    <div class="mb-6">
+        <p class="text-sm text-gray-500 uppercase tracking-wider font-bold mb-1">Call Us</p>
+        <a href="tel:+919607020711" class="text-xl font-bold text-red-600 hover:text-red-700 transition-colors">
+            +91 96070 20711
+        </a>
+    </div>
+
+    <a href="https://maps.google.com/?q=Mutha+Brothers+Mohan+Nagar+Pimpri" 
+       target="_blank" 
+       class="w-full py-3 px-6 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-all shadow-md hover:shadow-lg">
+        Get Directions on Maps
+    </a>
+</div>
+
+                  <section id="contact-info" class="bg-gray-50 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Visit & Connect</h2>
+            <div class="w-20 h-1.5 bg-red-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-house text-red-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Our Address</h3>
+                <address class="not-italic text-gray-600 leading-relaxed mb-6">
+                    <span class="font-semibold text-gray-800">Mutha Brothers</span><br>
+                    Near PCMC School, Mohan Nagar<br>
+                    Pimpri-Chinchwad, MH 411019
+                </address>
+                <a href="https://maps.google.com" target="_blank" class="text-red-600 font-bold hover:text-red-700 transition-colors">
+                    📍 Open in Google Maps
+                </a>
+            </div>
+
+            <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-clock text-red-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Business Hours</h3>
+                <p class="text-gray-600 mb-6">Mon — Sun<br>
+                    <span class="font-bold text-gray-900 text-lg">10:00 AM — 9:30 PM</span>
+                </p>
+                
+                <div class="w-full pt-4 border-t border-gray-100">
+                    <div id="store-time" class="text-xs text-gray-400 font-bold mb-1">LOCAL TIME: --:--</div>
+                    <div class="flex items-center justify-center gap-2">
+                        <span id="status-dot" class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+                        <span id="store-status" class="font-bold text-sm text-gray-900 uppercase">Checking...</span>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-comments text-red-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Get In Touch</h3>
+                <p class="text-gray-600 mb-6">Call us directly or send a message on WhatsApp for pricing.</p>
+                
+                <div class="flex flex-col gap-3 w-full">
+                    <a href="tel:+919607020711" class="flex items-center justify-center gap-2 bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition-all shadow-md">
+                        <i class="fa-solid fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/919607020711" class="flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition-all shadow-md">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     </main>
 
@@ -1427,6 +1541,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 
 </html>
+
 
 
 
