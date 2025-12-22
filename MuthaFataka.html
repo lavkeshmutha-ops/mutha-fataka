@@ -12,6 +12,10 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <!-- Configure Tailwind to use Inter font -->
     <script>
         tailwind.config = {
@@ -31,13 +35,13 @@
         font-family: 'Inter', sans-serif;
     }
     h1 {
-        @apply text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight;
+        @apply text-4xl md:text-6xl font-black text-gray-900 leading-tight;
     }
     h2 {
-        @apply text-3xl md:text-4xl font-bold text-gray-900;
+        @apply text-3xl md:text-5xl font-bold text-gray-900;
     }
     h3 {
-        @apply text-xl font-semibold text-gray-900;
+        @apply text-xl md:text-2xl font-semibold text-gray-900;
     }
 }
 
@@ -55,21 +59,25 @@
 .hero-bg {
     background: linear-gradient(
         135deg,
-        #fee2e2 0%,
-        #fecaca 50%,
-        #fca5a5 100%
+        #dc2626 0%,
+        #ef4444 50%,
+        #dc2626 100%
     );
     position: relative;
     overflow: hidden;
 }
 
-/* subtle floating dots */
+/* Modern geometric pattern */
 .hero-bg::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='2' fill='rgba(0,0,0,0.06)'/%3E%3Ccircle cx='80' cy='40' r='1.5' fill='rgba(0,0,0,0.05)'/%3E%3Ccircle cx='60' cy='80' r='1' fill='rgba(0,0,0,0.04)'/%3E%3Ccircle cx='40' cy='60' r='1.5' fill='rgba(0,0,0,0.05)'/%3E%3C/svg%3E");
-    animation: float 20s ease-in-out infinite;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 2px, transparent 2px),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: geometricFloat 25s ease-in-out infinite;
     z-index: 0;
 }
 
@@ -78,31 +86,58 @@
     z-index: 1;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes geometricFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-5px) rotate(1deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+.bursting-crackers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cracker {
+    position: absolute;
+    font-size: 2rem;
+    animation: burstCracker 6s infinite ease-out;
+}
+
+@keyframes burstCracker {
+    0% { transform: translateY(50vh) scale(0) rotate(0deg); opacity: 0; }
+    20% { transform: translateY(30vh) scale(1.5) rotate(90deg); opacity: 1; }
+    50% { transform: translateY(10vh) scale(1) rotate(180deg); opacity: 1; }
+    80% { transform: translateY(-10vh) scale(0.8) rotate(270deg); opacity: 0.5; }
+    100% { transform: translateY(-30vh) scale(0) rotate(360deg); opacity: 0; }
 }
 
 /* ================= CARDS ================= */
 
 .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .card-hover:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(102, 126, 234, 0.3);
 }
 
 /* ================= TEXT EFFECTS ================= */
 
 .text-gradient {
-    background: linear-gradient(135deg, #dc2626, #b91c1c, #991b1b);
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .glow-effect {
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.4);
 }
 
 /* ================= PARALLAX ================= */
@@ -128,20 +163,95 @@
 /* ================= IMAGE EFFECTS ================= */
 
 .img-zoom {
-    transition: transform 450ms cubic-bezier(0.2, 0.9, 0.2, 1),
-                filter 350ms ease,
-                box-shadow 350ms ease;
+    transition: transform 500ms cubic-bezier(0.2, 0.9, 0.2, 1),
+                filter 400ms ease,
+                box-shadow 400ms ease;
     will-change: transform;
     cursor: pointer;
+    position: relative;
+    border-radius: 16px;
 }
 .img-zoom:hover {
-    transform: scale(1.06) rotate(-0.6deg);
-    filter: brightness(1.03) saturate(1.05);
-    box-shadow: 0 18px 32px rgba(0,0,0,0.18);
+    transform: scale(1.08) rotate(1deg);
+    filter: brightness(1.05) saturate(1.1) contrast(1.05);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
 }
 
 .gallery-img {
     transform-origin: center;
+}
+
+/* Gallery image captions */
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gallery-caption {
+    position: relative;
+    background: none;
+    color: #374151;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    transform: none;
+    transition: none;
+    backdrop-filter: none;
+}
+
+/* Modern theme enhancements */
+.modern-bg {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+    min-height: 100vh;
+}
+
+.modern-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(102,126,234,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(118,75,162,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(240,147,251,0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Enhanced hover effects for modern theme */
+.card-hover:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 32px 64px -12px rgba(102, 126, 234, 0.25);
+    border: 1px solid rgba(102, 126, 234, 0.4);
+}
+
+/* Video card enhancements */
+.video-card::after {
+    content: '▶';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 56px;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 0 30px rgba(102,126,234,0.8);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+}
+
+.video-card:hover::after {
+    opacity: 1;
 }
 
 /* ================= LIGHTBOX ================= */
@@ -209,24 +319,24 @@ h1[id], h2[id], h3[id] {
 
 
 </head>
-<body class="bg-white text-gray-800">
+<body class="modern-bg text-gray-800">
 
 
     <!-- Header & Navigation -->
     <header class="bg-white shadow-lg sticky top-0 z-40">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Shop Logo/Name -->
            <div class="hidden md:flex flex-wrap justify-end gap-6">
 
-                <img src="Logo.jpeg" alt="Mutha Fataka Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='Fataka_pics/M_logo.svg';">
-                <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Mutha Fataka</a>
+                <img src="Fataka_pics/Logo.jpeg" alt="Mutha Fataka Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='Fataka_pics/M_logo.svg';">
+                <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Mutha Fataka</a>
             </div>
             
             <!-- Desktop Navigation -->
            <div class="hidden md:flex space-x-8">
     <a href="#home" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Home</a>
     <a href="#about" class="text-gray-600 hover:text-red-600 transition-colors duration-300">About</a>
-    <a href="#gallery" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Gallery</a>
+    <a href="#gallery" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Videos & Images</a>
     <a href="#reviews" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Reviews</a>
     <a href="#services" class="text-gray-600 hover:text-red-600 transition-colors duration-300">What We Offer</a>
     <a href="#location" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Location</a>
@@ -234,7 +344,7 @@ h1[id], h2[id], h3[id] {
 </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-red-500">
+            <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
@@ -245,7 +355,7 @@ h1[id], h2[id], h3[id] {
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
     <a href="#home" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Home</a>
     <a href="#about" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">About</a>
-    <a href="#gallery" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Gallery</a>
+    <a href="#gallery" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Videos & Images</a>
     <a href="#services" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">What We Offer</a>
     <a href="#location" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Location</a>
     <a href="#contact" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Contact</a>
@@ -256,9 +366,13 @@ h1[id], h2[id], h3[id] {
     <!-- Main Content -->
     <main>
 <!-- Home / Hero Section -->
-<section id="home" class="hero-bg py-16 md:py-24" data-aos="fade-up" data-aos-duration="1000">
+<section id="home" class="hero-bg py-20 md:py-28" data-aos="fade-up" data-aos-duration="1000">
+    <div class="bursting-crackers">
+        <div class="cracker" style="left: 15%; animation-delay: 0s;">🎆</div>
+        <div class="cracker" style="left: 85%; animation-delay: 6s;">🎇</div>
+    </div>
 
-    <div class="container mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-6">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
@@ -269,7 +383,7 @@ h1[id], h2[id], h3[id] {
 
                 <h1 class="mb-6">
                     Welcome to
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-300">
                         Mutha Fataka
                     </span>
                 </h1>
@@ -281,9 +395,9 @@ h1[id], h2[id], h3[id] {
                 </p>
 
                 <a href="#about"
-                   class="inline-block bg-gradient-to-r from-red-600 to-red-700
+                   class="inline-block bg-gradient-to-r from-red-500 to-red-700
                           text-white font-bold py-4 px-10 rounded-lg text-lg
-                          hover:from-red-700 hover:to-red-800 transition-all
+                          hover:from-red-600 hover:to-red-800 transition-all
                           duration-300 shadow-lg hover:shadow-xl
                           transform hover:-translate-y-1">
                     Learn More
@@ -312,8 +426,8 @@ h1[id], h2[id], h3[id] {
 
 
         <!-- Customer Reviews -->
-<section class="bg-gray-100 py-20" data-aos="fade-up" data-aos-duration="800">
-    <div class="container mx-auto px-6">
+<section class="bg-gray-50 py-20 md:py-28" data-aos="fade-up" data-aos-duration="800">
+    <div class="max-w-7xl mx-auto px-6">
         <h2 id="reviews" class="text-center mb-12">Customer Reviews</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -364,7 +478,7 @@ h1[id], h2[id], h3[id] {
 
         <!-- About Section -->
         <section class="bg-white py-20 md:py-28" data-aos="fade-up" data-aos-duration="800">
-            <div class="container mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <!-- About Text -->
                     <div class="max-w-4xl mx-auto text-center md:text-left" data-aos="fade-right" data-aos-duration="700">
@@ -386,7 +500,7 @@ h1[id], h2[id], h3[id] {
                                 <!-- WhatsApp -->
                                 <!-- Replace 1234567890 with your number -->
                                 <a href="https://wa.me/919607020711"
-                                   class="flex items-center space-x-2 text-lg font-semibold text-green-600 hover:text-green-700 transition-colors duration-300"
+                                   class="flex items-center space-x-2 text-lg font-semibold text-red-600 hover:text-red-700 transition-colors duration-300"
                                    target="_blank">
                                     <i class="fa-brands fa-whatsapp text-3xl"></i>
                                     <span>WhatsApp</span>
@@ -409,103 +523,92 @@ h1[id], h2[id], h3[id] {
                     </div>
                     <!-- About Image -->
                     <div data-aos="fade-left" data-aos-duration="700">
-                        <img 
-                            src="About.jpeg" 
-                            alt="A photo of the Mutha Fataka shop" 
+                        <img
+                            src="About.jpeg"
+                            alt="A photo of the Mutha Fataka shop"
                             class="rounded-xl shadow-2xl w-full h-auto object-cover img-zoom"
                             data-gallery-index="about"
                             onerror="this.src='https://placehold.co/600x400?text=Image+Not+Found'"
                         >
-                    </div> 
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Gallery Section -->
         <section class="bg-gray-100 py-20 md:py-28">
-            <div class="container mx-auto px-6">
-                <h2 id="gallery" class="text-center mb-8">Gallery</h2>
-                <!-- Removed all text content from here -->
-                <div>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                        <!-- Image 1 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
-                            <img src="Fataka1.jpeg" alt="Fataka1" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="0" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                        </div>
-                        <!-- Image 2 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="200">
-                            <img src="Fataka2.jpeg" alt="Fataka2" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="1" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                        </div>
-                        <!-- Image 3 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="300">
-                            <img src="Fataka3.jpeg" alt="Fataka3" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="2" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                        </div>
-                        <!-- Image 4 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="400">
-                            <img src="Fataka4.jpeg" alt="Fataka4" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="3" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                        </div>
-                        <!-- Video 7: Fataka5 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="700">
-                            <video src="Fataka5.mp4" poster="Fataka5_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="4" data-title="Evening Sparklers" preload="metadata" controls playsinline aria-label="Fataka5 video">Your browser does not support the video tag.</video>
+            <div class="max-w-7xl mx-auto px-6">
+        <h2 id="gallery" class="text-center mb-8">Gallery</h2>
 
-                        </div>
-
-                        <!-- Video 8: Fataka6 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="800">
-                            <video src="Fataka6.mp4" poster="Fataka_pics/Fataka6_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="5" data-title="Sky Rockets" preload="metadata" controls playsinline aria-label="Fataka6 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                        <!-- Video 9: Fataka7 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="900">
-                            <video src="Fataka7.mp4" poster="Fataka_pics/Fataka7_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="6" data-title="Colorful Fountains" preload="metadata" controls playsinline aria-label="Fataka7 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                        <!-- Video 10: Fataka8 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1000">
-                            <video src="Fataka8.mp4" poster="Fataka_pics/Fataka8_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="7" data-title="Festival Finale" preload="metadata" controls playsinline aria-label="Fataka8 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                        <!-- Video 11: Fataka9 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1100">
-                            <video src="Fataka9.mp4" poster="Fataka_pics/Fataka9_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="8" data-title="Family Moments" preload="metadata" controls playsinline aria-label="Fataka9 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                        <!-- Video 12: Fataka10 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1200">
-                            <video src="Fataka10.mp4" poster="Fataka_pics/Fataka10_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="9" data-title="Burst Collection" preload="metadata" controls playsinline aria-label="Fataka10 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                        <!-- Video 13: Fataka11 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1300">
-                            <video src="Fataka11.mp4" poster="Fataka_pics/Fataka11_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="10" data-title="Midnight Show" preload="metadata" controls playsinline aria-label="Fataka11 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                        <!-- Video 14: Fataka12 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1400">
-                            <video src="Fataka12.mp4" poster="Fataka_pics/Fataka12_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="11" data-title="Big Finale" preload="metadata" controls playsinline aria-label="Fataka12 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                        <!-- Video 15: Fataka13 -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1500">
-                            <video src="Fataka13.mp4" poster="Fataka_pics/Fataka13_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="12" data-title="Celebration Reel" preload="metadata" controls playsinline aria-label="Fataka13 video">Your browser does not support the video tag.</video>
-
-                        </div>
-
-                    </div>
+        <!-- Videos Section -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-semibold text-center mb-4">Shop Videos</h3>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+                Explore our shop through these videos showcasing the interior and atmosphere.<br>
+                See how we organize our products and serve our customers.<br>
+                Get a glimpse of the friendly environment at Mutha Fataka.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Video 1: Fataka5 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
+                    <video src="Fataka5.mp4" poster="Fataka5_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="0" data-title="Shop Video: Evening Atmosphere" preload="metadata" controls playsinline aria-label="Fataka5 video">Your browser does not support the video tag.</video>
                 </div>
+                <!-- Video 2: Fataka6 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="200">
+                    <video src="Fataka6.mp4" poster="Fataka6_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="1" data-title="Shop Video: Customer Service" preload="metadata" controls playsinline aria-label="Fataka6 video">Your browser does not support the video tag.</video>
+                </div>
+                <!-- Video 3: Fataka7 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="300">
+                    <video src="Fataka7.mp4" poster="Fataka7_poster.svg" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="2" data-title="Shop Video: Product Display" preload="metadata" controls playsinline aria-label="Fataka7 video">Your browser does not support the video tag.</video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Images Section -->
+        <div>
+            <h3 class="text-2xl font-semibold text-center mb-4">Firecracker Images</h3>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+                Discover our extensive collection of firecrackers through these images.<br>
+                From sparklers to rockets, we have everything for your celebrations.<br>
+                Quality and safety are our top priorities in every product.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="400">
+                    <img src="Firecrackers1.webp" alt="Fataka1" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="3" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                </div>
+                <!-- Image 2 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="500">
+                    <img src="Firecrackers2.jpeg" alt="Fataka2" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="4" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                </div>
+                <!-- Image 3 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="600">
+                    <img src="Firecrackers3.jpg" alt="Fataka3" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="5" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                </div>
+                <!-- Image 4 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="700">
+                    <img src="Firecrackers4.webp" alt="Fataka4" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="6" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                </div>
+                <!-- Image 5 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="800">
+                    <img src="Firecrackers6.jpeg" alt="Firecrackers6" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="7" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                </div>
+                <!-- Image 6 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="900">
+                    <img src="Firecrackers7.jpeg" alt="Firecrackers7" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="8" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                </div>
+                <!-- Image 7 -->
+                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1000">
+                    <img src="Firecracker8.jpg" alt="Firecracker8" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="9" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
+                </div>
+            </div>
+        </div>
             </div>
         </section>
         
         <!-- What We Offer Section -->
         <section class="bg-gray-50 py-20 md:py-28">
-            <div class="container mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-6">
                 <div class="max-w-4xl mx-auto text-center">
                     <h2 id="services" class="mb-8">What We Offer</h2>
                     <p class="text-lg text-gray-600 mb-16 max-w-3xl mx-auto">
@@ -539,7 +642,7 @@ h1[id], h2[id], h3[id] {
 
         <!-- Location & Hours Section -->
         <section class="bg-white py-20 md:py-28">
-            <div class="container mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 id="location" class="mb-6">Visit Us</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto"> We are located in the Pimpri-Chinchwad area and welcome customers to visit our shop.'</p>
@@ -589,7 +692,7 @@ h1[id], h2[id], h3[id] {
 
         <!-- Contact Section -->
         <section class="bg-gray-50 py-20 md:py-28">
-            <div class="container mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-6">
                 <div class="max-w-6xl mx-auto">
                     <h2 id="contact" class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">Get In Touch</h2>
                    <div class="max-w-3xl mx-auto bg-white p-10 rounded-2xl shadow-lg text-center">
@@ -622,7 +725,7 @@ h1[id], h2[id], h3[id] {
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12" data-aos="fade-up" data-aos-duration="900">
-        <div class="container mx-auto px-6 text-center">
+        <div class="max-w-7xl mx-auto px-6 text-center">
             <p>&copy; 2025 Mutha Fataka. All rights reserved.</p>
             <p class="text-sm mt-3">
     Fireworks are sold in accordance with local laws and safety regulations.
@@ -855,7 +958,7 @@ h1[id], h2[id], h3[id] {
         overlay.setAttribute('aria-modal','true');
         overlay.setAttribute('tabindex','-1');
         btnClose.focus();
-        currentIndex = index;
+        currentIndex = parseInt(el.getAttribute('data-gallery-index'));
     }
 
     function hide() {
@@ -957,34 +1060,346 @@ h1[id], h2[id], h3[id] {
 })();
 </script>
 
+<!-- Enhanced Animations with GSAP -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for mobile device
+    const isMobile = window.innerWidth < 768;
+
+    // Animation defaults (0.5-0.7s duration, fade-up as default)
+    const defaultDuration = 0.6;
+    const defaultEase = "power2.out";
+
+    // 🏠 Home (Hero Section)
+    const heroSection = document.querySelector('#home');
+    const heroHeading = heroSection.querySelector('h1');
+    const heroParagraph = heroSection.querySelector('p');
+    const heroButton = heroSection.querySelector('a[href="#about"]');
+    const heroImage = heroSection.querySelector('img');
+
+    // Set initial states
+    gsap.set([heroHeading, heroParagraph, heroButton, heroImage], { opacity: 0, y: 30 });
+
+    // Hero animations timeline
+    const heroTl = gsap.timeline({ delay: 0.3 });
+    heroTl
+        .to(heroHeading, { opacity: 1, y: 0, scale: 1.02, duration: defaultDuration, ease: defaultEase })
+        .to(heroParagraph, { opacity: 1, y: 0, duration: defaultDuration, ease: defaultEase }, "-=0.2")
+        .to(heroButton, { opacity: 1, y: 0, duration: defaultDuration, ease: defaultEase }, "-=0.2")
+        .to(heroImage, { opacity: 1, y: 0, duration: defaultDuration, ease: defaultEase }, "-=0.2");
+
+    // Slow zoom-in on background (10-12s)
+    if (!isMobile) {
+        gsap.to('.hero-bg', {
+            scale: 1.05,
+            duration: 12,
+            ease: "none",
+            repeat: -1,
+            yoyo: true
+        });
+    }
+
+    // Soft glow pulse on button (infinite but subtle)
+    gsap.to(heroButton, {
+        boxShadow: "0 0 20px rgba(239, 68, 68, 0.4)",
+        duration: 2,
+        ease: "power2.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+
+    // ℹ️ About Section
+    const aboutSection = document.querySelector('#about');
+    const aboutTitle = aboutSection.querySelector('h2');
+    const aboutText = aboutSection.querySelector('p');
+    const aboutImage = aboutSection.querySelector('img');
+
+    gsap.set(aboutTitle, { opacity: 0 });
+    gsap.set(aboutText, { opacity: 0, x: -50 });
+    gsap.set(aboutImage, { opacity: 0, x: 50 });
+
+    const aboutObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                gsap.to(aboutTitle, { opacity: 1, duration: defaultDuration, ease: defaultEase });
+                gsap.to(aboutText, { opacity: 1, x: 0, duration: defaultDuration, ease: defaultEase, delay: 0.2 });
+                gsap.to(aboutImage, { opacity: 1, x: 0, duration: defaultDuration, ease: defaultEase, delay: 0.2 });
+            }
+        });
+    }, { threshold: 0.3 });
+    aboutObserver.observe(aboutSection);
+
+    // 🖼️ Gallery Section
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    galleryItems.forEach((item, index) => {
+        const img = item.querySelector('img, video');
+        const overlay = item.querySelector('.gallery-caption');
+
+        // Initial state
+        gsap.set(item, { opacity: 0, scale: 0.9 });
+        gsap.set(overlay, { opacity: 1 });
+
+        // Zoom-in on scroll
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gsap.to(entry.target, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: defaultDuration,
+                        ease: defaultEase,
+                        delay: index * 0.1
+                    });
+                }
+            });
+        }, { threshold: 0.2 });
+        galleryObserver.observe(item);
+
+        // Hover effects
+        item.addEventListener('mouseenter', function() {
+            gsap.to(img, { scale: 1.1, duration: 0.4, ease: defaultEase });
+        });
+
+        item.addEventListener('mouseleave', function() {
+            gsap.to(img, { scale: 1, duration: 0.4, ease: defaultEase });
+        });
+    });
+
+    // ⭐ Reviews Section
+    const reviewsSection = document.querySelector('#reviews');
+    const reviewCards = reviewsSection.querySelectorAll('.bg-white');
+    const starRatings = reviewsSection.querySelectorAll('.text-yellow-500');
+
+    gsap.set(reviewCards, { opacity: 0, y: 30 });
+    gsap.set(starRatings, { scale: 0 });
+
+    const reviewsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Fade-up cards one by one
+                reviewCards.forEach((card, index) => {
+                    gsap.to(card, {
+                        opacity: 1,
+                        y: 0,
+                        duration: defaultDuration,
+                        ease: defaultEase,
+                        delay: index * 0.2
+                    });
+                });
+
+                // Scale-in pop for star ratings
+                starRatings.forEach((rating, index) => {
+                    gsap.to(rating, {
+                        scale: 1,
+                        duration: 0.5,
+                        ease: "back.out(1.7)",
+                        delay: 0.3 + index * 0.2
+                    });
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    reviewsObserver.observe(reviewsSection);
+
+    // 🎆 What We Offer Section
+    const servicesSection = document.querySelector('#services');
+    const serviceCards = servicesSection.querySelectorAll('.flex.flex-col.items-center');
+    const serviceIcons = servicesSection.querySelectorAll('svg');
+
+    gsap.set(serviceCards, { opacity: 0, y: 30 });
+    gsap.set(serviceIcons, { rotation: 0 });
+
+    const servicesObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Fade-up + stagger for cards
+                serviceCards.forEach((card, index) => {
+                    gsap.to(card, {
+                        opacity: 1,
+                        y: 0,
+                        duration: defaultDuration,
+                        ease: defaultEase,
+                        delay: index * 0.15
+                    });
+                });
+
+                // Rotate icons slightly
+                serviceIcons.forEach((icon, index) => {
+                    gsap.to(icon, {
+                        rotation: 5,
+                        duration: 0.8,
+                        ease: "power2.inOut",
+                        repeat: -1,
+                        yoyo: true,
+                        delay: 0.5 + index * 0.1
+                    });
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    servicesObserver.observe(servicesSection);
+
+    // Hover effects for service cards
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            gsap.to(card, { y: -8, duration: 0.3, ease: defaultEase });
+            gsap.to(card, { boxShadow: "0 20px 40px rgba(239, 68, 68, 0.2)", duration: 0.3 });
+        });
+
+        card.addEventListener('mouseleave', function() {
+            gsap.to(card, { y: 0, duration: 0.3, ease: defaultEase });
+            gsap.to(card, { boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)", duration: 0.3 });
+        });
+    });
+
+    // 📍 Location Section
+    const locationSection = document.querySelector('#location');
+    const locationCards = locationSection.querySelectorAll('.flex.flex-col.items-center');
+    const locationIcon = locationSection.querySelector('.fa-house');
+
+    gsap.set(locationCards, { opacity: 0, y: 30 });
+    gsap.set(locationIcon, { scale: 0 });
+
+    const locationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Fade-in for cards
+                locationCards.forEach((card, index) => {
+                    gsap.to(card, {
+                        opacity: 1,
+                        y: 0,
+                        duration: defaultDuration,
+                        ease: defaultEase,
+                        delay: index * 0.2
+                    });
+                });
+
+                // Bounce once for pin icon
+                gsap.to(locationIcon, {
+                    scale: 1,
+                    duration: 0.6,
+                    ease: "bounce.out",
+                    delay: 0.4
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    locationObserver.observe(locationSection);
+
+    // Animation consistency: Disable heavy effects on mobile
+    if (isMobile) {
+        // Reduce or disable complex animations on mobile
+        gsap.set('.bursting-crackers', { display: 'none' });
+        gsap.set('.hero-bg::before', { display: 'none' });
+    }
+
+    // 🎆 Micro-animations: Spark bursts on button hovers
+    const buttons = document.querySelectorAll('a[href="#about"], .bg-red-600, .bg-green-600');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function(e) {
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Create 5-7 spark particles
+            for (let i = 0; i < 6; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'spark';
+                spark.style.left = centerX + 'px';
+                spark.style.top = centerY + 'px';
+                document.body.appendChild(spark);
+
+                // Random direction
+                const angle = (Math.PI * 2 * i) / 6 + Math.random() * 0.5;
+                const distance = 50 + Math.random() * 50;
+
+                gsap.fromTo(spark,
+                    { scale: 0, opacity: 1 },
+                    {
+                        x: Math.cos(angle) * distance,
+                        y: Math.sin(angle) * distance,
+                        scale: 1,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        onComplete: () => spark.remove()
+                    }
+                );
+            }
+        });
+    });
+
+    // Glow ring on page load
+    const glowRing = document.createElement('div');
+    glowRing.className = 'glow-ring';
+    glowRing.style.position = 'fixed';
+    glowRing.style.top = '50%';
+    glowRing.style.left = '50%';
+    glowRing.style.transform = 'translate(-50%, -50%)';
+    glowRing.style.width = '0px';
+    glowRing.style.height = '0px';
+    glowRing.style.border = '2px solid rgba(239, 68, 68, 0.5)';
+    glowRing.style.borderRadius = '50%';
+    glowRing.style.pointerEvents = 'none';
+    glowRing.style.zIndex = '10';
+    document.body.appendChild(glowRing);
+
+    gsap.to(glowRing, {
+        width: '200px',
+        height: '200px',
+        opacity: 0,
+        duration: 1.5,
+        ease: "power2.out",
+        delay: 0.5,
+        onComplete: () => glowRing.remove()
+    });
+
+    // 🎉 Festive text animations: Glow pulse on headings
+    const headings = document.querySelectorAll('h1, h2, h3');
+    headings.forEach(heading => {
+        gsap.to(heading, {
+            boxShadow: "0 0 20px rgba(239, 68, 68, 0.3)",
+            duration: 2,
+            ease: "power2.inOut",
+            repeat: -1,
+            yoyo: true
+        });
+    });
+
+    // Gradient shimmer on text (for hero title)
+    const shimmerText = document.querySelector('#home h1');
+    if (shimmerText) {
+        gsap.to(shimmerText, {
+            backgroundPosition: "200% center",
+            duration: 3,
+            ease: "linear",
+            repeat: -1
+        });
+    }
+
+    // Subtle page transitions: Fade in sections on scroll
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        gsap.set(section, { opacity: 0, y: 50 });
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gsap.to(entry.target, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: defaultEase
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+        sectionObserver.observe(section);
+    });
+});
+</script>
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
