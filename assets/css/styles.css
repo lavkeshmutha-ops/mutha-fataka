@@ -56,3 +56,26 @@ small,
   font-size: 0.9rem;
   color: #6b7280; /* gray-500 */
 }
+/* =========================
+   Card component
+   ========================= */
+
+.card-hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
