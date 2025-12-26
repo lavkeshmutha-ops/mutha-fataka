@@ -14,11 +14,12 @@ body {
 
    
 /* =========================
-   Professional typography scale
+   Typography – Professional Scale
    ========================= */
 
+/* Headings */
 h1 {
-  font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+  font-size: clamp(2.8rem, 4.8vw, 3.8rem); /* Hero strength */
   font-weight: 800;
   line-height: 1.15;
   color: #111827;
@@ -26,19 +27,32 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(2.1rem, 3.6vw, 2.8rem); /* Section titles */
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #111827;
   margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem); /* Card / subsection */
   font-weight: 600;
   line-height: 1.3;
   color: #111827;
   margin-bottom: 0.75rem;
 }
 
+/* Paragraphs */
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #374151; /* gray-700 */
+  margin-bottom: 1rem;
+}
 
+/* Small text (reviews, captions) */
+small,
+.text-small {
+  font-size: 0.9rem;
+  color: #6b7280; /* gray-500 */
+}
