@@ -11,32 +11,34 @@ body {
   color: #1f2937; /* gray-800 */
   background-color: #ffffff;
 }
+
+   
 /* =========================
-   Base typography (moved from index.html)
+   Professional typography scale
    ========================= */
 
-html {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
-               "Segoe UI", sans-serif;
-}
-
 h1 {
-  font-size: clamp(2.25rem, 4vw, 3.75rem); /* ~text-4xl to md:text-6xl */
-  font-weight: 800; /* font-black */
+  font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+  font-weight: 800;
   line-height: 1.15;
-  color: #111827; /* gray-900 */
+  color: #111827;
+  margin-bottom: 1.25rem;
 }
 
 h2 {
-  font-size: clamp(1.875rem, 3vw, 3rem); /* ~text-3xl to md:text-5xl */
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 700;
   line-height: 1.2;
   color: #111827;
+  margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem); /* ~text-xl to md:text-2xl */
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   font-weight: 600;
   line-height: 1.3;
   color: #111827;
+  margin-bottom: 0.75rem;
 }
+
+
