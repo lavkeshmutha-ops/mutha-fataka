@@ -1,9 +1,8 @@
-// main.js
-// Core site functionality
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ✅ Mobile menu toggle
+  /* ===============================
+     Mobile menu toggle
+     =============================== */
   const menuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
 
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileMenu.classList.toggle("hidden");
     });
 
-    // Close menu when a link is clicked
     mobileMenu.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         mobileMenu.classList.add("hidden");
@@ -20,8 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-});
-  // ✅ Smooth scrolling with sticky header offset
+  /* ===============================
+     Smooth scrolling with header offset
+     =============================== */
   const header = document.querySelector("header");
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -46,4 +45,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+});
 
