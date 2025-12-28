@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ===============================
      4. STORE OPEN / CLOSE STATUS
      =============================== */
-  const OPEN_HOUR = 9;
+  const OPEN_HOUR = 9.5;
   const CLOSE_HOUR = 22;
 
   function updateStoreStatus() {
@@ -120,13 +120,26 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       statusEl.textContent = "Closed Now";
       statusEl.className = "text-red-600 font-bold";
-      timeEl.textContent = "Opens at 9:00 AM";
+      timeEl.textContent = "Opens at 9:30 AM";
     }
   }
 
   updateStoreStatus();
   setInterval(updateStoreStatus, 60000);
-
 });
+ /* ========
+     5. AOS 
+    ======== */
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.AOS) {
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: "ease-out-cubic"
+    });
+  }
+});
+
+
 
 
