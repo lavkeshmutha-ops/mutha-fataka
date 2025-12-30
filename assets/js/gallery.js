@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ===============================
-     GALLERY LIGHTBOX
+     GALLERY LIGHTBOX (IMAGES + VIDEOS)
      =============================== */
 
   const galleryItems = Array.from(
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentIndex = -1;
   let lastFocusedEl = null;
+  let lightboxOpen = false;
 
   function openLightbox(index) {
     if (index < 0 || index >= galleryItems.length) return;
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const el = galleryItems[index];
     currentIndex = index;
     lastFocusedEl = document.activeElement;
+    lightboxOpen = true;
 
     mediaContainer.innerHTML = "";
 
@@ -50,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay.classList.add("show");
     overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
     closeBtn.focus();
   }
 
@@ -60,7 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.remove("show");
     overlay.setAttribute("aria-hidden", "true");
     mediaContainer.innerHTML = "";
+    document.body.style.overflow = "";
     currentIndex = -1;
+    lightboxOpen = false;
 
     if (lastFocusedEl) lastFocusedEl.focus();
   }
@@ -75,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // Click handlers
+  // Open handlers
   galleryItems.forEach((item, index) => {
     item.tabIndex = 0;
 
@@ -88,12 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  closeBtn.addEventListener("click", closeLightbox);
-  nextBtn.addEventListener("click", e => {
+  closeBtn?.addEventListener("click", closeLightbox);
+  nextBtn?.addEventListener("click", e => {
     e.stopPropagation();
     showNext();
   });
-  prevBtn.addEventListener("click", e => {
+  prevBtn?.addEventListener("click", e => {
     e.stopPropagation();
     showPrev();
   });
@@ -103,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("keydown", e => {
-    if (!overlay.classList.contains("show")) return;
+    if (!lightboxOpen) return;
 
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowRight") showNext();
@@ -112,18 +117,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ===============================
-     AUTOPLAY VIDEOS ON SCROLL
+     AUTOPLAY VIDEOS ON SCROLL (SAFE)
      =============================== */
 
   const galleryVideos = document.querySelectorAll(".gallery-video");
 
-  if (galleryVideos.length) {
+  if ("IntersectionObserver" in window && galleryVideos.length) {
     const videoObserver = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           const video = entry.target;
 
-          if (entry.isIntersecting) {
+          // Do not autoplay when lightbox is open
+          if (lightboxOpen) {
+            video.pause();
+            return;
+          }
+
+          if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
             video.muted = true;
             video.play().catch(() => {});
           } else {
@@ -131,13 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: [0.6] }
     );
 
     galleryVideos.forEach(video => {
       videoObserver.observe(video);
 
-      // Allow click to unmute
+      // Allow user intent to unmute
       video.addEventListener("click", () => {
         video.muted = false;
       });
@@ -145,4 +156,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
-
