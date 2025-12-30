@@ -279,3 +279,18 @@ p {
     transition: none !important;
   }
 }
+/* =========================
+   FORCE CONTENT VISIBILITY
+   ========================= */
+
+section h1,
+section h2,
+section h3,
+section p,
+section img,
+section video {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
