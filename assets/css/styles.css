@@ -293,4 +293,34 @@ section video {
   visibility: visible !important;
   transform: none !important;
 }
+/* =========================
+   BUSINESS HOURS CARD
+   ========================= */
+
+.business-hours-card {
+  background: linear-gradient(
+    135deg,
+    #fff7ed,
+    #fff1f2
+  );
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Open state */
+.store-open {
+  color: #16a34a;
+  text-shadow: 0 0 8px rgba(22, 163, 74, 0.45);
+}
+
+.store-open-dot {
+  background: #16a34a;
+  box-shadow: 0 0 12px rgba(22, 163, 74, 0.9);
+}
+
+/* Closed state */
+.store-closed {
+  color: #dc2626;
+  text-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+}
 
