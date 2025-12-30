@@ -1,655 +1,195 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mutha Fataka</title>
-    <link rel="icon" href="Mutha Fataka.ico" type="image/x-icon">
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-     <!-- Adding style.CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mutha Fataka</title>
 
-    <!-- Add Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- GSAP Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <!-- Lottie Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <!-- Configure Tailwind to use Inter font -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                },
-            },
+  <link rel="icon" href="Mutha Fataka.ico" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
         }
-    </script>
-    <!-- Custom styles for Inter font fallback -->
-
-
+      }
+    }
+  </script>
 </head>
+
 <body class="modern-bg text-gray-800">
 
-
-    <!-- Header & Navigation -->
-    <header class="bg-white shadow-lg sticky top-0 z-40">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Shop Logo/Name -->
-           <div class="hidden md:flex flex-wrap justify-end gap-6">
-
-                <img src="Logo.jpeg" alt="Mutha Fataka Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='Fataka_pics/M_logo.svg';">
-                <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Mutha Fataka</a>
-            </div>
-            
-            <!-- Desktop Navigation -->
-           <div class="hidden md:flex space-x-8">
-    <a href="#home" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Home</a>
-    <a href="#about" class="text-gray-600 hover:text-red-600 transition-colors duration-300">About</a>
-    <a href="#gallery" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Videos & Images</a>
-    <a href="#reviews" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Reviews</a>
-    <a href="#services" class="text-gray-600 hover:text-red-600 transition-colors duration-300">What We Offer</a>
-    <a href="#location" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Location</a>
-    <a href="#contact" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Contact</a>
-</div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </nav>
-
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
-    <a href="#home" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Home</a>
-    <a href="#about" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">About</a>
-    <a href="#gallery" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Videos & Images</a>
-    <a href="#services" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">What We Offer</a>
-    <a href="#location" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Location</a>
-    <a href="#contact" class="block px-6 py-3 text-gray-600 hover:bg-red-50 hover:text-red-600">Contact</a>
-</div>
-
-    </header>
-
-    <!-- Main Content -->
-    <main>
-<!-- Home / Hero Section -->
-<section id="home" class="hero-bg py-20 md:py-28" data-aos="fade-up" data-aos-duration="1000">
-    <div class="bursting-crackers">
-        <div class="cracker" style="left: 15%; animation-delay: 0s;">🎆</div>
-        <div class="cracker" style="left: 85%; animation-delay: 6s;">🎇</div>
+<!-- ================= HEADER ================= -->
+<header class="bg-white shadow-lg sticky top-0 z-40">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <img src="Logo.jpeg" class="h-10" alt="Mutha Fataka Logo">
+      <span class="text-xl font-bold bg-gradient-to-r from-red-500 to-red-700 text-transparent bg-clip-text">
+        Mutha Fataka
+      </span>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6">
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-            <!-- Text -->
-            <div class="text-center md:text-left"
-                 data-aos="fade-right"
-                 data-aos-delay="200">
-
-                <h1 class="mb-6">
-                    Welcome to
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-300">
-                        Mutha Fataka
-                    </span>
-                </h1>
-
-                <p class="text-lg text-gray-700 mb-8 max-w-xl">
-                    Mutha Fataka Shop, established in 1974, is a trusted fireworks
-                    wholesaler and retailer serving generations with quality,
-                    safety, and fair pricing.
-                </p>
-
-                <a href="#about"
-                   class="inline-block bg-gradient-to-r from-red-500 to-red-700
-                          text-white font-bold py-4 px-10 rounded-lg text-lg
-                          hover:from-red-600 hover:to-red-800 transition-all
-                          duration-300 shadow-lg hover:shadow-xl
-                          transform hover:-translate-y-1">
-                    Learn More
-                </a>
-            </div>
-
-            <!-- Image -->
-            <div class="flex justify-center md:justify-end"
-                 data-aos="fade-left"
-                 data-aos-delay="400">
-
-                <img
-                    src="Home.jpeg"
-                    alt="Fireworks display from Mutha Fataka"
-                    class="w-full max-w-sm rounded-xl shadow-2xl
-                           object-contain img-zoom"
-                >
-            </div>
-
-        </div>
-
+    <div class="hidden md:flex space-x-8 font-medium">
+      <a href="#home" class="hover:text-red-600">Home</a>
+      <a href="#about" class="hover:text-red-600">About</a>
+      <a href="#gallery" class="hover:text-red-600">Gallery</a>
+      <a href="#reviews" class="hover:text-red-600">Reviews</a>
+      <a href="#services" class="hover:text-red-600">Offers</a>
+      <a href="#contact" class="hover:text-red-600">Contact</a>
     </div>
+  </nav>
+</header>
 
-</section>
+<!-- ================= HERO ================= -->
+<section id="home" class="hero-bg py-24">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
 
+    <div data-aos="fade-right">
+      <h1>
+        Celebrations Begin With<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-300">
+          Mutha Fataka
+        </span>
+      </h1>
 
+      <p class="text-lg max-w-xl">
+        Established in 1974, Mutha Fataka is a trusted fireworks wholesaler and retailer
+        delivering quality, safety, and fair pricing for generations.
+      </p>
 
-        <!-- Customer Reviews -->
-<section class="bg-gray-50 py-20 md:py-28" data-aos="fade-up" data-aos-duration="800">
-    <div class="max-w-7xl mx-auto px-6">
-        <h2 id="reviews" class="text-center mb-12">Customer Reviews</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <!-- Review 1 -->
-            <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-                <div class="text-yellow-500 mb-2">★★★★★</div>
-                <p class="text-gray-600 text-sm">
-                    This is the second year we are purchasing firecrackers from this shop.
-                    The prices are reasonable and there is a wide variety.
-                    Staff is friendly and extremely helpful.
-                </p>
-                <p class="mt-4 font-semibold text-gray-900">
-                    Ganeshan Gowander
-                </p>
-            </div>
-
-            <!-- Review 2 -->
-            <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
-                <div class="text-yellow-500 mb-2">★★★★★</div>
-                <p class="text-gray-600 text-sm">
-                    Wholesale rates compared to other shops in the area.
-                    Fast service with lots of variety, especially for children.
-                </p>
-                <p class="mt-4 font-semibold text-gray-900">
-                    Ravindra S
-                </p>
-            </div>
-
-            <!-- Review 3 -->
-            <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
-                <div class="text-yellow-500 mb-2">★★★★★</div>
-                <p class="text-gray-600 text-sm">
-                    Reasonable rates and quality crackers.
-                    Highly recommended for festival shopping.
-                </p>
-                <p class="mt-4 font-semibold text-gray-900">
-                    Hardeep Sangwan
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-        <!-- Featured Products Section - REMOVED -->
-
-        <!-- About Section -->
-        <section class="bg-white py-20 md:py-28" data-aos="fade-up" data-aos-duration="800">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <!-- About Text -->
-                  <section id="about" style="padding: 80px 20px; background-color: #f9f9f9;">
-
-        <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
-            
-            <div style="flex: 1; min-width: 300px;">
-                <h2 style="color: #d32f2f; font-size: 2.5rem; margin-bottom: 20px;">Our Heritage Since 1974</h2>
-                <p style="line-height: 1.8; font-size: 1.1rem;">
-                    Welcome to <strong>Mutha Fataka</strong>, a name synonymous with celebration and tradition in Pimpri-Chinchwad. For over 50 years, we have been the region's trusted destination for high-quality products that light up your most cherished festive moments.
-                </p>
-                <p style="line-height: 1.8; font-size: 1.1rem;">
-                    Founded in 1974, our business is built on a foundation of reliability and deep-rooted community trust. We provide a wide range of options for both wholesale and retail customers.
-                </p>
-                
-                <div style="margin-top: 30px; display: flex; gap: 30px;">
-                    <div style="text-align: center;">
-                        <span style="display: block; font-size: 1.8rem; font-weight: bold; color: #d32f2f;">50+</span>
-                        <span style="font-size: 0.8rem; color: #666; text-transform: uppercase;">Years Experience</span>
-                    </div>
-                    <div style="text-align: center;">
-                        <span style="display: block; font-size: 1.8rem; font-weight: bold; color: #d32f2f;">100%</span>
-                        <span style="font-size: 0.8rem; color: #666; text-transform: uppercase;">Quality Focused</span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="flex: 1; min-width: 300px; background-color: #d32f2f; color: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(211, 47, 47, 0.2);">
-                <h3 style="margin-top: 0; font-size: 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">Why Choose Us?</h3>
-                <ul style="list-style: none; padding: 0; line-height: 2.5; font-size: 1.1rem;">
-                    <li>★ Wholesale & Retail Specialist</li>
-                    <li>★ Sourced from Best Manufacturers</li>
-                    <li>★ Competitive Pricing</li>
-                    <li>★ Trusted Local Legacy</li>
-                    <li>★ Wide Selection for Every Event</li>
-                </ul>
-            </div>
-        </div>
-    
-                        <!-- Social Links (Moved Here) -->
-                        <div class="mt-10">
-                            <h3 class="mb-4 text-lg font-semibold text-gray-700">Connect With Us:</h3>
-                            <div class="flex items-center space-x-6 justify-center md:justify-start">
-                                <!-- WhatsApp -->
-                                <!-- Replace 1234567890 with your number -->
-                                <a href="https://wa.me/919607020711"
-                                   class="flex items-center space-x-2 text-lg font-semibold text-red-600 hover:text-red-700 transition-colors duration-300"
-                                   target="_blank">
-                                    <i class="fa-brands fa-whatsapp text-3xl"></i>
-                                    <span>WhatsApp</span>
-                                </a>
-                                <!-- Facebook -->
-                                <a href="https://www.facebook.com/muthafataka" class="text-gray-500 hover:text-red-600 transition-colors duration-300" aria-label="Facebook">
-                                    <i class="fa-brands fa-facebook-f text-3xl"></i>
-                                </a>
-                                <!-- Instagram -->
-                                <a href="https://www.instagram.com/muthafataka1974/" class="text-gray-500 hover:text-red-600 transition-colors duration-300" aria-label="Instagram">
-                                    <i class="fa-brands fa-instagram text-3xl"></i>
-                                </a>
-                                <!-- Justdial -->
-                                <a href="https://www.justdial.com/search?query=Mutha%20Fataka%20Stall" class="text-gray-500 hover:text-red-600 transition-colors duration-300" aria-label="Justdial" target="_blank" rel="noopener noreferrer">
-                                    <i class="fa-solid fa-store text-3xl"></i>
-                                </a>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <!-- About Image -->
-                   <div style="flex: 1; min-width: 300px;">
-    <div data-aos="fade-left" data-aos-duration="700">
-        <img
-            src="About.jpeg"
-            alt="A photo of the Mutha Fataka shop"
-            class="rounded-xl shadow-2xl w-full h-auto object-cover img-zoom"
-            style="border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); display: block; width: 100%; height: auto;"
-            data-gallery-index="about"
-            onerror="this.src='https://placehold.co/600x400?text=Shop+Image+Coming+Soon'"
-        >
-    
-
-          </div>
-     </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section class="bg-gray-100 py-20 md:py-28">
-            <div class="max-w-7xl mx-auto px-6">
-        <h2 id="gallery" class="text-center mb-8">Gallery</h2>
-
-        <!-- Videos Section -->
-        <div class="mb-12">
-            <h3 class="text-2xl font-semibold text-center mb-4">Shop Videos</h3>
-            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                Explore our shop through these videos showcasing the interior and atmosphere.<br>
-                See how we organize our products and serve our customers.<br>
-                Get a glimpse of the friendly environment at Mutha Fataka.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Video 1: Fataka5 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
-                    <video src="Fataka5.mp4"  class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="0" data-title="Shop Video: Evening Atmosphere" preload="metadata" controls playsinline aria-label="Fataka5 video">Your browser does not support the video tag.</video>
-                </div>
-                <!-- Video 2: Fataka6 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="200">
-                    <video src="Fataka6.mp4"  class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="1" data-title="Shop Video: Customer Service" preload="metadata" controls playsinline aria-label="Fataka6 video">Your browser does not support the video tag.</video>
-                </div>
-                <!-- Video 3: Fataka7 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 video-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="300">
-                    <video src="Fataka7.mp4" class="w-full h-auto object-cover aspect-square img-zoom gallery-video" data-gallery-index="2" data-title="Shop Video: Product Display" preload="metadata" controls playsinline aria-label="Fataka7 video">Your browser does not support the video tag.</video>
-                </div>
-            </div>
-        </div>
-
-        <!-- Images Section -->
-        <div>
-            <h3 class="text-2xl font-semibold text-center mb-4">Firecracker Images</h3>
-            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                Discover our extensive collection of firecrackers through these images.<br>
-                From sparklers to rockets, we have everything for your celebrations.<br>
-                Quality and safety are our top priorities in every product.
-            </p>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Image 1 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="400">
-                    <img src="Firecrackers1.webp" alt="Fataka1" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="3" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                </div>
-                <!-- Image 2 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="500">
-                    <img src="Firecrackers2.jpeg" alt="Fataka2" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="4" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                </div>
-                <!-- Image 3 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="600">
-                    <img src="Firecrackers3.jpg" alt="Fataka3" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="5" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                </div>
-                <!-- Image 4 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="700">
-                    <img src="Firecrackers4.webp" alt="Fataka4" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="6" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                </div>
-                <!-- Image 5 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="800">
-                    <img src="Firecrackers6.jpeg" alt="Firecrackers6" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="7" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                </div>
-                <!-- Image 6 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="900">
-                    <img src="Firecrackers7.jpeg" alt="Firecrackers7" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="8" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                </div>
-                <!-- Image 7 -->
-                <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="1000">
-                    <img src="Firecracker8.jpg" alt="Firecracker8" class="w-full h-auto object-cover aspect-square img-zoom gallery-img" data-gallery-index="9" onerror="this.src='https://placehold.co/600x500?text=Image+Not+Found'">
-                </div>
-            </div>
-        </div>
-            </div>
-        </section>
-        
-       <section id="services" class="relative bg-white py-24 overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="gray" stroke-width="1"/>
-                </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-red-600 font-bold uppercase tracking-widest text-sm">Premium Selection</span>
-            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mt-3 mb-6">What We Offer</h2>
-            <p class="text-lg text-gray-600 leading-relaxed">
-                Elevate your celebrations with our curated range of high-quality products. We prioritize 
-                <span class="text-gray-900 font-semibold border-b-2 border-red-500">safety, brilliance, and value</span> 
-                for every festive occasion.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            
-            <div class="group relative p-10 bg-gray-50 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-2xl border border-transparent hover:border-red-100" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 transition-colors duration-500">
-                    <svg class="w-10 h-10 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Sparklers & Fountains</h3>
-                <p class="text-gray-600 leading-relaxed">Vibrant ground displays designed for close-range family enjoyment. High-intensity colors with low smoke options.</p>
-                <div class="mt-6 flex items-center text-red-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                    Explore Category <span class="ml-2">→</span>
-                </div>
-            </div>
-
-            <div class="group relative p-10 bg-gray-50 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-2xl border border-transparent hover:border-red-100" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-orange-500 transition-colors duration-500">
-                    <svg class="w-10 h-10 text-orange-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Rockets & Aerials</h3>
-                <p class="text-gray-600 leading-relaxed">From single shots to multi-color shells. Experience breathtaking sky-high bursts that light up your entire festival night.</p>
-                <div class="mt-6 flex items-center text-orange-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                    Explore Category <span class="ml-2">→</span>
-                </div>
-            </div>
-
-            <div class="group relative p-10 bg-gray-50 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-2xl border border-transparent hover:border-red-100" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-20 h-20 bg-yellow-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-yellow-500 transition-colors duration-500">
-                    <svg class="w-10 h-10 text-yellow-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Event Packages</h3>
-                <p class="text-gray-600 leading-relaxed">Specialized collections for weddings, corporate events, and grand celebrations. Curated for maximum visual impact.</p>
-                <div class="mt-6 flex items-center text-yellow-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                    Explore Category <span class="ml-2">→</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-      <section id="location" class="bg-gray-50 py-24">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Visit Our Shop</h2>
-            <div class="w-20 h-1.5 bg-red-600 mx-auto rounded-full mb-6"></div>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Conveniently located in the heart of Pimpri-Chinchwad. We look forward to serving you!
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-            
-            <div class="space-y-6" data-aos="fade-right">
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start space-x-6 hover:shadow-md transition-shadow">
-                    <div class="bg-red-50 p-4 rounded-2xl">
-                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Location</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Mutha Fataka, Pimpri-Chinchwad Area,<br>
-                            Pune, Maharashtra, India
-                        </p>
-                        <a href="https://maps.app.goo.gl/ZzBxjypDBbUNXUrF7" target="_blank" class="inline-block mt-4 text-red-600 font-semibold hover:underline">Get Directions →</a>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start space-x-6 hover:shadow-md transition-shadow">
-                    <div class="bg-blue-50 p-4 rounded-2xl">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <div class="w-full">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Business Hours</h3>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-gray-600">
-                                <span>Mon - Sat</span>
-                                <span class="font-medium text-gray-900">9:00 AM - 9:00 PM</span>
-                            </div>
-                            <div class="flex justify-between text-gray-600 border-t pt-2">
-                                <span>Sunday</span>
-                                <span class="font-medium text-gray-900">10:00 AM - 6:00 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rounded-3xl overflow-hidden shadow-lg border-4 border-white h-full min-h-[400px]" data-aos="fade-left">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.400949425558!2d73.79559537496613!3d18.64599538247207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9a630d72393%3A0xbf9f8edb828084a4!2sMutha%20Fataka!5e0!3m2!1sen!2sin!4v1766507409951!5m2!1sen!2sin"  
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-                </iframe>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-               <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 text-center border border-gray-100" data-aos="fade-up" data-aos-duration="700">
-    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
-        <i class="fa-solid fa-location-dot text-red-600 text-3xl"></i>
-    </div>
-
-    <h3 class="text-2xl font-bold text-gray-900 mb-3">Our Location</h3>
-    
-    <address class="not-italic text-gray-600 leading-relaxed mb-6">
-        <span class="font-semibold text-gray-800">Mutha Brothers</span><br>
-        Near PCMC School, Mohan Nagar<br>
-        Pimpri Colony, Pimpri-Chinchwad<br>
-        Maharashtra 411019
-    </address>
-
-    <div class="mb-6">
-        <p class="text-sm text-gray-500 uppercase tracking-wider font-bold mb-1">Call Us</p>
-        <a href="tel:+919607020711" class="text-xl font-bold text-red-600 hover:text-red-700 transition-colors">
-            +91 96070 20711
+      <div class="flex gap-4 mt-8">
+        <a href="#contact" class="bg-red-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700">
+          Call / WhatsApp
         </a>
+        <a href="#gallery" class="border border-gray-300 px-8 py-4 rounded-xl font-bold hover:bg-gray-100">
+          View Gallery
+        </a>
+      </div>
     </div>
 
-    <a href="https://maps.app.goo.gl/ZzBxjypDBbUNXUrF7" 
-       target="_blank" 
-       class="w-full py-3 px-6 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-all shadow-md hover:shadow-lg">
-        Get Directions on Maps
-    </a>
-</div>
-
-                  <section id="contact-info" class="bg-gray-50 py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-6">
-        
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Visit & Connect</h2>
-            <div class="w-20 h-1.5 bg-red-600 mx-auto rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
-                    <i class="fa-solid fa-house text-red-600 text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gray-900">Our Grocery Shop Address</h3>
-                <address class="not-italic text-gray-600 leading-relaxed mb-6">
-                    <span class="font-semibold text-gray-800">Mutha Brothers</span><br>
-                    Near PCMC School, Mohan Nagar<br>
-                    Pimpri-Chinchwad, MH 411019
-                </address>
-                <a href="https://maps.app.goo.gl/LdNfs157d5MzEyed6" target="_blank" class="text-red-600 font-bold hover:text-red-700 transition-colors">
-                    📍 Open in Google Maps
-                </a>
-            </div>
-
-            <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
-                    <i class="fa-solid fa-clock text-red-600 text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gray-900">Business Hours</h3>
-                <p class="text-gray-600 mb-6">Mon — Sun<br>
-                    <span class="font-bold text-gray-900 text-lg">10:00 AM — 9:30 PM</span>
-                </p>
-                
-                <div class="w-full pt-4 border-t border-gray-100">
-                    <div id="store-time" class="text-xs text-gray-400 font-bold mb-1">LOCAL TIME: --:--</div>
-                    <div class="flex items-center justify-center gap-2">
-                        <span id="status-dot" class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-                        <span id="store-status" class="font-bold text-sm text-gray-900 uppercase">Checking...</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
-                    <i class="fa-solid fa-comments text-red-600 text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gray-900">Get In Touch</h3>
-                <p class="text-gray-600 mb-6">Call us directly or send a message on WhatsApp for pricing.</p>
-                
-                <div class="flex flex-col gap-3 w-full">
-                    <a href="tel:+919607020711" class="flex items-center justify-center gap-2 bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition-all shadow-md">
-                        <i class="fa-solid fa-phone"></i> Call Now
-                    </a>
-                    <a href="https://wa.me/919607020711" class="flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition-all shadow-md">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <img src="Home.jpeg" alt="Fireworks display" class="rounded-xl shadow-2xl img-zoom" data-aos="fade-left">
+  </div>
 </section>
 
-    </main>
+<!-- ================= TRUST ================= -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
+    <div><h3>50+ Years</h3><p>Trusted Legacy</p></div>
+    <div><h3>Wholesale Rates</h3><p>Best Pricing</p></div>
+    <div><h3>Certified</h3><p>Safe Products</p></div>
+    <div><h3>Local Favorite</h3><p>Pimpri-Chinchwad</p></div>
+  </div>
+</section>
 
-    <!-- Lightbox modal for gallery images and videos -->
-    <div id="lightbox-overlay" aria-hidden="true">
-        <button class="lightbox-close" aria-label="Close">✕</button>
-        <div class="lightbox-prev lightbox-nav" role="button" aria-label="Previous">‹</div>
-        <div class="lightbox-media" aria-live="polite" role="region"></div>
-        <div class="lightbox-next lightbox-nav" role="button" aria-label="Next">›</div>
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="bg-gray-50 py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-center mb-12">Customer Reviews</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card-hover p-6">
+        ★★★★★
+        <p>Wide variety, reasonable prices, very helpful staff.</p>
+        <strong>Ganeshan Gowander</strong>
+      </div>
+      <div class="card-hover p-6">
+        ★★★★★
+        <p>Wholesale rates and fast service. Kids loved it.</p>
+        <strong>Ravindra S</strong>
+      </div>
+      <div class="card-hover p-6">
+        ★★★★★
+        <p>Good quality crackers. Highly recommended.</p>
+        <strong>Hardeep Sangwan</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="bg-white py-24">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+    <div>
+      <h2>Our Heritage Since 1974</h2>
+      <p>
+        For over five decades, Mutha Fataka has been a trusted name in festive celebrations,
+        serving wholesale and retail customers with integrity and care.
+      </p>
+
+      <ul class="mt-6 space-y-3 font-semibold">
+        <li>✔ Wholesale & Retail Specialists</li>
+        <li>✔ Sourced from Best Manufacturers</li>
+        <li>✔ Competitive Pricing</li>
+        <li>✔ Trusted Local Legacy</li>
+      </ul>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12" data-aos="fade-up" data-aos-duration="900">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p>&copy; 2025 Mutha Fataka. All rights reserved.</p>
-            <p class="text-sm mt-3">
-    Fireworks are sold in accordance with local laws and safety regulations.
-    </p>
+    <img src="About.jpeg" alt="Mutha Fataka Shop" class="rounded-xl shadow-xl img-zoom">
+  </div>
+</section>
 
-            <div class="flex justify-center space-x-6 mt-4">
-                <!-- Text links removed, icon links are now in the 'About' section -->
-            </div>
-        </div>
-        <p class="text-xs text-gray-500 mt-2">
-    Reviews displayed are sourced from publicly available Google customer feedback.
-</p>
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="bg-gray-100 py-24">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="mb-8">Gallery</h2>
+    <p class="text-gray-600 mb-6">Explore our shop, products, and festive moments.</p>
+    <!-- keep your existing gallery grid here -->
+  </div>
+</section>
 
-    </footer>
+<!-- ================= SERVICES ================= -->
+<section id="services" class="bg-white py-24">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="mb-12">What We Offer</h2>
 
-   <!-- JS Files -->
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/gallery.js" defer></script>
-<script src="assets/js/animations.js" defer></script>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="card-hover p-8">
+        <h3>Sparklers & Fountains</h3>
+        <p>Ground displays ideal for family celebrations.</p>
+      </div>
+      <div class="card-hover p-8">
+        <h3>Rockets & Aerials</h3>
+        <p>High-impact sky fireworks for grand nights.</p>
+      </div>
+      <div class="card-hover p-8">
+        <h3>Event Packages</h3>
+        <p>Curated collections for weddings and events.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT / CTA ================= -->
+<section id="contact" class="bg-red-600 text-white py-20 text-center">
+  <h2 class="mb-6">Ready to Light Up Your Celebration?</h2>
+
+  <div class="flex justify-center gap-4">
+    <a href="tel:+919607020711" class="bg-white text-red-600 px-8 py-4 rounded-xl font-bold">
+      Call Now
+    </a>
+    <a href="https://wa.me/919607020711" class="bg-green-600 px-8 py-4 rounded-xl font-bold">
+      WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-gray-900 text-gray-400 py-10 text-center">
+  <p>© 2025 Mutha Fataka. All rights reserved.</p>
+  <p class="text-xs mt-2">Fireworks sold as per local safety regulations.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/gallery.js"></script>
+<script src="assets/js/animations.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+<script>AOS.init();</script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
