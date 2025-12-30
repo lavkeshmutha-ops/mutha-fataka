@@ -16,9 +16,10 @@
   <!-- ================= FAVICON ================= -->
   <link rel="icon" href="Mutha Fataka.ico" type="image/x-icon" />
 
-  <!-- ================= FONTS ================= -->
+  <!-- ================= GOOGLE FONT ================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- ================= TAILWIND ================= -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,13 +28,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 
   <!-- ================= ICONS ================= -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7F5Z9eW7J2z5x0X+ug=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <!-- ================= AOS ================= -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -60,7 +55,6 @@
 
 <body class="modern-bg text-gray-800 antialiased">
 
-
 <!-- ================= HEADER ================= -->
 <header class="bg-white shadow-lg sticky top-0 z-40">
   <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -84,12 +78,10 @@
 
 <!-- ================= HERO ================= -->
 <section id="home" class="hero-bg py-28 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
 
-    <!-- TEXT CONTENT -->
     <div data-aos="fade-right">
-      <!-- Trust badge -->
-      <span class="inline-block mb-4 px-4 py-1 rounded-full bg-white/90 text-red-600 text-sm font-bold tracking-wide shadow">
+      <span class="inline-block mb-4 px-4 py-1 rounded-full bg-white/90 text-red-600 text-sm font-bold shadow">
         Since 1974 · Trusted Fireworks Store
       </span>
 
@@ -100,786 +92,135 @@
 
       <p class="text-lg text-gray-100 max-w-xl mt-6">
         A family-run fireworks wholesaler and retailer delivering
-        <strong class="text-white">quality</strong>,
-        <strong class="text-white">safety</strong>, and
-        <strong class="text-white">fair pricing</strong>
-        for generations of celebrations.
+        quality, safety, and fair pricing for generations.
       </p>
 
-      <!-- CTA buttons -->
       <div class="flex flex-col sm:flex-row gap-5 mt-10">
-
-        <a
-          href="#contact"
-          class="inline-flex items-center justify-center gap-3 bg-red-600 text-white px-10 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-red-700 hover:scale-105 transition-all glow-red"
-        >
-          <i class="fa-solid fa-phone"></i>
-          Call / WhatsApp
+        <a href="#contact" class="btn-primary glow-red">
+          <i class="fa-solid fa-phone mr-2"></i>Call / WhatsApp
         </a>
-
-        <a
-          href="#gallery"
-          class="inline-flex items-center justify-center gap-3 border-2 border-white/70 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-red-600 transition-all"
-        >
-          <i class="fa-regular fa-images"></i>
-          View Gallery
+        <a href="#gallery" class="btn-outline text-white border-white">
+          <i class="fa-regular fa-images mr-2"></i>View Gallery
         </a>
-
       </div>
-
-      <!-- Social proof -->
-      <p class="mt-8 text-sm text-red-100 tracking-wide">
-        Wholesale & Retail · Pimpri-Chinchwad · Family-Friendly Products
-      </p>
     </div>
 
-    <!-- HERO IMAGE -->
-    <div data-aos="fade-left" class="relative flex justify-center md:justify-end">
+    <div data-aos="fade-left" class="relative">
       <div class="absolute -inset-6 bg-yellow-400/30 blur-3xl rounded-full"></div>
-
-      <img
-        src="Home.jpeg"
-        alt="Fireworks display by Mutha Fataka"
-        class="relative rounded-2xl shadow-2xl img-zoom max-w-md w-full"
-        loading="eager"
-      >
+      <img src="Home.jpeg" alt="Fireworks display" class="relative rounded-2xl shadow-2xl img-zoom">
     </div>
 
   </div>
 </section>
 
-
 <!-- ================= TRUST ================= -->
 <section class="bg-white py-20">
-  <div class="max-w-7xl mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="mb-12">Why <span class="highlight-gold">Trust Us</span></h2>
 
-    <!-- Section heading -->
-    <div class="text-center mb-14">
-      <h2 class="mb-4">
-        Why <span class="highlight-gold">Trust Us</span>
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        A legacy built on quality, safety, and long-standing customer relationships.
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="card-hover p-8">
+        <h3 class="text-4xl highlight-red font-extrabold">50+ Years</h3>
+        <p class="highlight-green font-semibold">Trusted Legacy</p>
+      </div>
+      <div class="card-hover p-8">
+        <h3>Wholesale Rates</h3>
+        <p>Fair Pricing</p>
+      </div>
+      <div class="card-hover p-8">
+        <h3>Certified</h3>
+        <p>Safe Products</p>
+      </div>
+      <div class="card-hover p-8">
+        <h3>Local Favourite</h3>
+        <p>Pimpri-Chinchwad</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="bg-white py-28">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+
+    <div data-aos="fade-right">
+      <span class="inline-block mb-4 px-4 py-1 rounded-full bg-red-50 text-red-600 text-sm font-bold">
+        Established in 1974
+      </span>
+
+      <h2>Our <span class="highlight-gold">Heritage</span> of Celebration</h2>
+
+      <p class="mt-6 text-lg text-gray-700 max-w-xl">
+        For over five decades, <strong>Mutha Fataka</strong> has been a trusted name in festive
+        celebrations, serving wholesale and retail customers with integrity and care.
       </p>
+
+      <ul class="mt-8 space-y-3 font-semibold">
+        <li>✔ Wholesale & Retail Specialists</li>
+        <li>✔ Trusted Manufacturers</li>
+        <li>✔ Transparent Pricing</li>
+        <li>✔ Generational Trust</li>
+      </ul>
     </div>
 
-    <!-- Trust cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
-
-      <!-- Card 1 -->
-      <div class="card-hover p-8">
-        <h3 class="text-4xl font-extrabold highlight-red mb-2">
-          50+ Years
-        </h3>
-        <p class="highlight-green font-semibold tracking-wide">
-          Trusted Legacy
-        </p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card-hover p-8">
-        <h3 class="text-3xl font-bold text-gray-900 mb-2">
-          Wholesale Rates
-        </h3>
-        <p class="text-gray-600 font-semibold">
-          Best & Fair Pricing
-        </p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card-hover p-8">
-        <h3 class="text-3xl font-bold text-gray-900 mb-2">
-          Certified Products
-        </h3>
-        <p class="text-gray-600 font-semibold">
-          Safety First Approach
-        </p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="card-hover p-8">
-        <h3 class="text-3xl font-bold text-gray-900 mb-2">
-          Local Favourite
-        </h3>
-        <p class="text-gray-600 font-semibold">
-          Pimpri-Chinchwad
-        </p>
-      </div>
-
-    </div>
+    <img src="About.jpeg" alt="Mutha Fataka Shop" class="rounded-2xl shadow-2xl img-zoom" data-aos="fade-left">
   </div>
 </section>
 
 <!-- ================= REVIEWS ================= -->
-<section id="reviews" class="bg-gray-50 py-24">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-
-    <!-- Heading -->
-    <div class="mb-14">
-      <h2 class="mb-4">
-        What Our <span class="highlight-gold">Customers Say</span>
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Real, verified Google reviews from customers who trust
-        <span class="highlight-red">Mutha Fataka</span> for quality,
-        safety, and fair pricing.
-      </p>
-    </div>
-
-    <!-- Trustindex Widget Wrapper -->
-    <div
-      class="bg-white rounded-3xl shadow-xl p-6 md:p-10 card-hover"
-      data-aos="fade-up"
-    >
-      <!-- Trustindex Script -->
-      <script
-        defer
-        async
-        src="https://cdn.trustindex.io/loader.js?5d21ca261e33320d5e4644973f7">
-      </script>
-    </div>
-
-    <!-- Trust note -->
-    <p class="mt-10 text-sm text-gray-500">
-      ★ Reviews shown are sourced directly from Google and updated automatically.
-    </p>
-
-  </div>
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="bg-white py-28">
-  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-
-    <!-- TEXT CONTENT -->
-    <div data-aos="fade-right">
-
-      <!-- Trust badge -->
-      <span class="inline-block mb-4 px-4 py-1 rounded-full bg-red-50 text-red-600 text-sm font-bold tracking-wide">
-        Established in 1974
-      </span>
-
-      <h2 class="mt-4">
-        Our <span class="highlight-gold">Heritage</span> of Celebration
-      </h2>
-
-      <p class="mt-6 text-lg text-gray-700 max-w-xl leading-relaxed">
-        For over five decades, <strong>Mutha Fataka</strong> has been a trusted name in festive
-        celebrations, serving both wholesale and retail customers with
-        <span class="highlight-red font-semibold">integrity</span>,
-        <span class="highlight-red font-semibold">quality</span>, and
-        <span class="highlight-red font-semibold">care</span>.
-      </p>
-
-      <p class="mt-4 text-gray-600 max-w-xl">
-        What began as a small local business has grown into a well-known destination
-        for safe, reliable, and fairly priced fireworks in Pimpri-Chinchwad.
-      </p>
-
-      <!-- Key points -->
-      <ul class="mt-10 space-y-4 text-gray-800 font-semibold">
-        <li class="flex items-center gap-3">
-          <i class="fa-solid fa-check-circle text-green-600"></i>
-          Wholesale & Retail Specialists
-        </li>
-        <li class="flex items-center gap-3">
-          <i class="fa-solid fa-check-circle text-green-600"></i>
-          Sourced from Trusted Manufacturers
-        </li>
-        <li class="flex items-center gap-3">
-          <i class="fa-solid fa-check-circle text-green-600"></i>
-          Competitive & Transparent Pricing
-        </li>
-        <li class="flex items-center gap-3">
-          <i class="fa-solid fa-check-circle text-green-600"></i>
-          Trusted Local Legacy
-        </li>
-      </ul>
-
-      <p class="mt-8 text-sm text-gray-500 tracking-wide">
-        Serving generations of families, businesses, and celebrations.
-      </p>
-    </div>
-
-    <!-- IMAGE -->
-    <div data-aos="fade-left" class="relative">
-      <div class="absolute -inset-6 bg-red-200/30 blur-3xl rounded-full"></div>
-
-      <img
-        src="About.jpeg"
-        alt="Mutha Fataka shop exterior and festive setup"
-        class="relative rounded-2xl shadow-2xl img-zoom w-full max-w-md mx-auto"
-        loading="lazy"
-      >
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= WHY CUSTOMERS COME BACK ================= -->
-<section class="bg-gray-50 py-20">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <!-- Heading -->
-    <div class="text-center mb-14">
-      <h2 class="mb-4">
-        Why Customers <span class="highlight-gold">Come Back</span>
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Because trust isn’t built in one visit. It’s earned, year after year.
-      </p>
-    </div>
-
-    <!-- Reasons -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-
-      <!-- Reason 1 -->
-      <div class="card-hover p-8 reason-card glow-red">
-        <div class="mb-4 text-red-600 text-3xl">
-          <i class="fa-solid fa-handshake"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Honest Guidance</h3>
-        <p class="text-gray-600 text-sm">
-          We recommend what’s right for your celebration, not what’s expensive.
-        </p>
-      </div>
-
-      <!-- Reason 2 -->
-      <div class="card-hover p-8 reason-card glow-green">
-        <div class="mb-4 text-green-600 text-3xl">
-          <i class="fa-solid fa-shield-heart"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Safety First</h3>
-        <p class="text-gray-600 text-sm">
-          Certified products, clear instructions, and a responsible approach.
-        </p>
-      </div>
-
-      <!-- Reason 3 -->
-      <div class="card-hover p-8 reason-card glow-gold">
-        <div class="mb-4 text-yellow-500 text-3xl">
-          <i class="fa-solid fa-tags"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Fair Pricing</h3>
-        <p class="text-gray-600 text-sm">
-          Transparent wholesale and retail rates without last-minute surprises.
-        </p>
-      </div>
-
-      <!-- Reason 4 -->
-      <div class="card-hover p-8 reason-card glow-blue">
-        <div class="mb-4 text-blue-600 text-3xl">
-          <i class="fa-solid fa-people-group"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Familiar Faces</h3>
-        <p class="text-gray-600 text-sm">
-          Generations of families return because they know us personally.
-        </p>
-      </div>
-
-    </div>
-
+<section id="reviews" class="bg-gray-50 py-24 text-center">
+  <h2 class="mb-10">What Our <span class="highlight-gold">Customers Say</span></h2>
+  <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl p-8">
+    <script defer async src="https://cdn.trustindex.io/loader.js?5d21ca261e33320d5e4644973f7"></script>
   </div>
 </section>
 
 <!-- ================= GALLERY ================= -->
 <section id="gallery" class="bg-gray-100 py-24">
-  <div class="max-w-7xl mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="mb-12">Our <span class="highlight-gold">Gallery</span></h2>
 
-    <!-- Heading -->
-    <div class="text-center mb-16">
-      <h2 class="mb-4">
-        Our <span class="highlight-gold">Gallery</span>
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        A glimpse into the vibrant world of Mutha Fataka — from powerful ground fountains
-        and joyful sparklers to grand festive displays that light up every celebration.
-      </p>
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      <video src="Fataka5.mp4" muted autoplay loop playsinline class="rounded-xl"></video>
+      <video src="Fataka6.mp4" muted autoplay loop playsinline class="rounded-xl"></video>
+      <video src="Fataka7.mp4" muted autoplay loop playsinline class="rounded-xl"></video>
     </div>
 
-    <!-- ================= SHOP VIDEOS ================= -->
-    <div class="mb-20">
-      <h3 class="text-center mb-10 highlight-red">Shop Videos</h3>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <div class="gallery-item video-card img-zoom">
-          <video
-            src="Fataka5.mp4"
-            class="gallery-video w-full aspect-square object-cover rounded-xl"
-            preload="metadata"
-            muted
-            playsinline
-          ></video>
-          <p class="gallery-caption">
-            A walk-through of our shop showcasing product variety and festive atmosphere.
-          </p>
-        </div>
-
-        <div class="gallery-item video-card img-zoom">
-          <video
-            src="Fataka6.mp4"
-            class="gallery-video w-full aspect-square object-cover rounded-xl"
-            preload="metadata"
-            muted
-            playsinline
-          ></video>
-          <p class="gallery-caption">
-            Inside view of our firecracker displays and organized product sections.
-          </p>
-        </div>
-
-        <div class="gallery-item video-card img-zoom">
-          <video
-            src="Fataka7.mp4"
-            class="gallery-video w-full aspect-square object-cover rounded-xl"
-            preload="metadata"
-            muted
-            playsinline
-          ></video>
-          <p class="gallery-caption">
-            A glimpse of customer-friendly service and festive preparations at the shop.
-          </p>
-        </div>
-
-      </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <img src="Firecrackers1.webp" class="gallery-img rounded-xl">
+      <img src="Firecrackers2.jpeg" class="gallery-img rounded-xl">
+      <img src="Firecrackers3.jpg" class="gallery-img rounded-xl">
+      <img src="Firecrackers4.webp" class="gallery-img rounded-xl">
+      <img src="Firecrackers5.jpeg" class="gallery-img rounded-xl">
+      <img src="Firecrackers6.jpeg" class="gallery-img rounded-xl">
+      <img src="Firecrackers7.jpeg" class="gallery-img rounded-xl">
     </div>
-
-    <!-- ================= CRACKER IMAGES ================= -->
-    <div>
-      <h3 class="text-center mb-10 highlight-red">Bursting Crackers</h3>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-
-        <div class="gallery-item img-zoom">
-          <img
-            src="Firecrackers1.webp"
-            alt="Ground fountain firecracker producing bright white sparks at night"
-            class="gallery-img w-full aspect-square object-cover rounded-xl"
-          >
-          <p class="gallery-caption">
-            High-intensity ground fountain producing a stunning vertical spray of white sparks.
-          </p>
-        </div>
-
-        <div class="gallery-item img-zoom">
-          <img
-            src="Firecrackers2.jpeg"
-            alt="Colorful ground firecracker creating a wide sparkling effect"
-            class="gallery-img w-full aspect-square object-cover rounded-xl"
-          >
-          <p class="gallery-caption">
-            Wide ground display releasing colorful sparks, ideal for open festive spaces.
-          </p>
-        </div>
-
-        <div class="gallery-item img-zoom">
-          <img
-            src="Firecrackers3.jpg"
-            alt="Assorted firecrackers displayed in boxes at the shop"
-            class="gallery-img w-full aspect-square object-cover rounded-xl"
-          >
-          <p class="gallery-caption">
-            Assorted firecracker packs offering variety for families and celebrations.
-          </p>
-        </div>
-
-        <div class="gallery-item img-zoom">
-          <img
-            src="Firecrackers4.webp"
-            alt="Firecracker chain bursting with sparks on the ground"
-            class="gallery-img w-full aspect-square object-cover rounded-xl"
-          >
-          <p class="gallery-caption">
-            Traditional cracker chain igniting in sequence with energetic flashes.
-          </p>
-        </div>
-
-        <div class="gallery-item img-zoom">
-          <img
-            src="Firecrackers5.jpeg"
-            alt="Spinning firecracker producing circular golden sparks"
-            class="gallery-img w-full aspect-square object-cover rounded-xl"
-          >
-          <p class="gallery-caption">
-            Spinning firecracker creating a beautiful circular burst of golden sparks.
-          </p>
-        </div>
-
-        <div class="gallery-item img-zoom">
-          <img
-            src="Firecrackers6.jpeg"
-            alt="Handheld sparklers glowing brightly in the dark"
-            class="gallery-img w-full aspect-square object-cover rounded-xl"
-          >
-          <p class="gallery-caption">
-            Handheld sparklers loved by children and adults for safe festive moments.
-          </p>
-        </div>
-
-        <div class="gallery-item img-zoom">
-          <img
-            src="Firecrackers7.jpeg"
-            alt="Green aerial fireworks exploding in the night sky"
-            class="gallery-img w-full aspect-square object-cover rounded-xl"
-          >
-          <p class="gallery-caption">
-            Grand aerial firework lighting up the sky with vibrant green and gold bursts.
-          </p>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- ================= SERVICES ================= -->
-<section id="services" class="bg-white py-24">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- Heading -->
-    <div class="text-center mb-16">
-      <h2 class="mb-4">
-        What We <span class="highlight-gold">Offer</span>
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        A carefully selected range of fireworks designed for safety,
-        brilliance, and unforgettable celebrations.
-      </p>
-    </div>
-
-    <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-      <!-- Service 01 -->
-      <div class="card-hover p-10 text-center relative">
-        <span class="absolute top-6 right-6 text-5xl font-extrabold text-red-100">
-          01
-        </span>
-        <h3 class="text-2xl font-bold mb-4">
-          Sparklers & Fountains
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Ground-based fireworks ideal for family celebrations, children,
-          and safe festive enjoyment with vibrant colors and steady effects.
-        </p>
-      </div>
-
-      <!-- Service 02 -->
-      <div class="card-hover p-10 text-center relative">
-        <span class="absolute top-6 right-6 text-5xl font-extrabold text-red-100">
-          02
-        </span>
-        <h3 class="text-2xl font-bold mb-4">
-          Rockets & Aerials
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          High-impact aerial fireworks that light up the sky with powerful
-          bursts, perfect for grand festive nights and open spaces.
-        </p>
-      </div>
-
-      <!-- Service 03 -->
-      <div class="card-hover p-10 text-center relative">
-        <span class="absolute top-6 right-6 text-5xl font-extrabold text-red-100">
-          03
-        </span>
-        <h3 class="text-2xl font-bold mb-4">
-          Assorted Family Packs
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Thoughtfully packed combinations offering a mix of sparklers,
-          fountains, and small effects for complete family celebrations.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- ================= CONTACT / CTA ================= -->
-<section
-  id="contact"
-  class="relative bg-red-600 text-white py-28 text-center overflow-hidden"
->
-  <!-- Decorative glow background -->
-  <div class="absolute inset-0 opacity-30 pointer-events-none">
-    <div class="absolute top-12 left-1/4 w-80 h-80 bg-yellow-400 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-12 right-1/4 w-80 h-80 bg-red-900 rounded-full blur-3xl"></div>
-  </div>
-
-  <div class="relative max-w-4xl mx-auto px-6">
-
-    <!-- Heading -->
-    <h2 class="mb-6 text-white leading-tight">
-      Ready to <span class="highlight-gold">Light Up</span><br />
-      Your Celebration?
-    </h2>
-
-    <p class="text-lg text-red-100 max-w-2xl mx-auto mb-12">
-      Call us or message on WhatsApp for the best prices, bulk orders,
-      and honest guidance for a safe & spectacular celebration.
-    </p>
-
-    <!-- CTA Buttons -->
-    <div class="flex flex-col sm:flex-row justify-center gap-6">
-      <a
-        href="tel:+919607020711"
-        class="btn-primary glow-red flex items-center justify-center gap-3 text-lg px-12 py-4 rounded-xl shadow-xl hover:scale-105 transition-transform"
-      >
-        <i class="fa-solid fa-phone"></i>
-        Call Now
-      </a>
-
-      <a
-        href="https://wa.me/919607020711"
-        target="_blank"
-        class="btn-primary glow-gold flex items-center justify-center gap-3 text-lg px-12 py-4 rounded-xl shadow-xl hover:scale-105 transition-transform"
-      >
-        <i class="fa-brands fa-whatsapp"></i>
-        WhatsApp Us
-      </a>
-    </div>
-
-    <!-- Trust line -->
-    <p class="mt-12 text-sm text-red-200 tracking-wide">
-      Trusted by customers since
-      <span class="font-bold text-white">1974</span> ·
-      Wholesale & Retail Available
-    </p>
-  </div>
-</section>
-
-<!-- ================= LOCATION ================= -->
-<section
-  id="location"
-  class="relative bg-gray-50 py-28 overflow-hidden"
->
-  <!-- Decorative background -->
-  <div class="absolute inset-0 opacity-20 pointer-events-none">
-    <div class="absolute top-24 left-24 w-72 h-72 bg-red-300 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-24 right-24 w-72 h-72 bg-yellow-300 rounded-full blur-3xl"></div>
-  </div>
-
-  <div class="relative max-w-7xl mx-auto px-6">
-
-    <!-- Heading -->
-    <div class="text-center mb-20">
-      <h2 class="mb-4">
-        Visit Our <span class="highlight-gold">Shop</span>
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Conveniently located in Pimpri-Chinchwad. Walk in, explore,
-        and celebrate with confidence.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
-
-      <!-- LEFT: INFO -->
-      <div class="space-y-10">
-
-        <!-- Address Card -->
-        <div class="card-hover p-9 flex gap-6 items-start">
-          <div class="bg-red-100 p-4 rounded-2xl text-red-600 text-2xl">
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <div>
-            <h3 class="mb-2">Our Address</h3>
-            <address class="not-italic text-gray-700 leading-relaxed">
-              <strong class="highlight-red">Mutha Fataka</strong><br />
-              Near PCMC School, Mohan Nagar<br />
-              Pimpri Colony, Pimpri-Chinchwad<br />
-              Maharashtra 411019
-            </address>
-
-            <a
-              href="https://maps.app.goo.gl/ZzBxjypDBbUNXUrF7"
-              target="_blank"
-              class="inline-block mt-4 font-bold highlight-blue hover:underline"
-            >
-              Get Directions →
-            </a>
-          </div>
-        </div>
-
-        <!-- Business Hours Card -->
-        <div class="card-hover p-9 flex gap-6 items-start">
-          <div class="bg-green-100 p-4 rounded-2xl text-green-600 text-2xl">
-            <i class="fa-solid fa-clock"></i>
-          </div>
-
-          <div class="w-full">
-            <h3 class="mb-4">Business Hours</h3>
-
-            <div class="space-y-3 text-gray-700">
-              <div class="flex justify-between border-b pb-2">
-                <span>Monday – Saturday</span>
-                <strong class="highlight-green">9:30 AM – 10:00 PM</strong>
-              </div>
-              <div class="flex justify-between pt-1">
-                <span>Sunday</span>
-                <strong class="highlight-green">10:00 AM – 6:00 PM</strong>
-              </div>
-            </div>
-
-            <!-- Live status -->
-            <div class="mt-6 flex items-center gap-3">
-              <span
-                id="status-dot"
-                class="w-3 h-3 rounded-full bg-gray-400"
-              ></span>
-              <span
-                id="store-status"
-                class="font-bold uppercase tracking-wide"
-              >
-                Checking…
-              </span>
-              <span
-                id="store-time"
-                class="text-sm text-gray-500"
-              ></span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- RIGHT: MAP -->
-      <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.400949425558!2d73.79559537496613!3d18.64599538247207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9a630d72393%3A0xbf9f8edb828084a4!2sMutha%20Fataka!5e0!3m2!1sen!2sin!4v1766507409951!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style="border:0; min-height: 440px;"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-
-    </div>
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="bg-red-600 text-white py-24 text-center">
+  <h2 class="mb-6">Ready to <span class="highlight-gold">Light Up</span> Your Celebration?</h2>
+  <div class="flex justify-center gap-6">
+    <a href="tel:+919607020711" class="btn-primary glow-red">Call Now</a>
+    <a href="https://wa.me/919607020711" class="btn-primary glow-gold">WhatsApp</a>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="bg-gray-900 text-gray-400 pt-14 pb-8">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- Top Footer -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left mb-10">
-
-      <!-- Brand -->
-      <div>
-        <h3 class="text-white text-xl font-bold mb-3">
-          Mutha <span class="highlight-gold">Fataka</span>
-        </h3>
-        <p class="text-sm leading-relaxed max-w-sm">
-          A trusted name in fireworks since 1974, serving generations with
-          quality, safety, and fair pricing in Pimpri-Chinchwad.
-        </p>
-      </div>
-
-      <!-- Quick Links -->
-      <div>
-        <h4 class="text-white font-semibold mb-3">Quick Links</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#home" class="hover:text-white transition">Home</a></li>
-          <li><a href="#about" class="hover:text-white transition">About Us</a></li>
-          <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
-          <li><a href="#reviews" class="hover:text-white transition">Reviews</a></li>
-          <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <h4 class="text-white font-semibold mb-3">Contact</h4>
-        <p class="text-sm mb-2">
-          📍 Pimpri-Chinchwad, Maharashtra
-        </p>
-        <p class="text-sm mb-2">
-          📞 <a href="tel:+919607020711" class="hover:text-white transition">+91 96070 20711</a>
-        </p>
-        <p class="text-sm">
-          💬 <a href="https://wa.me/919607020711" target="_blank" class="hover:text-white transition">
-            WhatsApp Us
-          </a>
-        </p>
-
-        <!-- Social Icons -->
-        <div class="flex justify-center md:justify-start gap-5 mt-4 text-xl">
-          <a href="https://www.instagram.com/muthafataka1974/" target="_blank" class="hover:text-white transition">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com/muthafataka" target="_blank" class="hover:text-white transition">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <a href="https://wa.me/919607020711" target="_blank" class="hover:text-white transition">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Divider -->
-    <div class="border-t border-gray-700 pt-6 text-center text-xs text-gray-500">
-      <p>
-        © 2025 <span class="text-gray-300 font-semibold">Mutha Fataka</span>.
-        All rights reserved.
-      </p>
-      <p class="mt-2 max-w-2xl mx-auto">
-        Fireworks are sold strictly in accordance with local laws and safety regulations.
-        Customers are advised to follow usage guidelines responsibly.
-      </p>
-    </div>
-
-  </div>
+<footer class="bg-gray-900 text-gray-400 py-10 text-center">
+  <p>© 2025 Mutha Fataka. All rights reserved.</p>
+  <p class="text-xs mt-2">Fireworks sold as per local safety regulations.</p>
 </footer>
 
-<!-- ================= SCRIPTS ================= -->
-<script src="assets/js/main.js"></script>
-<script src="assets/js/gallery.js"></script>
-<script src="assets/js/animations.js"></script>
+<!-- Mobile Sticky CTA -->
+<div class="fixed bottom-0 inset-x-0 md:hidden flex bg-white shadow-2xl z-50">
+  <a href="tel:+919607020711" class="flex-1 py-4 text-red-600 font-bold">Call</a>
+  <a href="https://wa.me/919607020711" class="flex-1 py-4 bg-green-600 text-white font-bold">WhatsApp</a>
+</div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  if (window.AOS) {
-    AOS.init({
-      once: true,
-      duration: 800,
-      easing: "ease-out-cubic"
-    });
-  }
-</script>
-
-  <!-- ================= MOBILE STICKY CTA ================= -->
-<div
-  id="mobile-cta"
-  class="fixed bottom-0 inset-x-0 z-50 bg-white border-t border-gray-200 shadow-2xl flex md:hidden"
->
-  <a
-    href="tel:+919607020711"
-    class="flex-1 flex items-center justify-center gap-2 py-4 text-red-600 font-bold"
-  >
-    <i class="fa-solid fa-phone"></i>
-    Call
-  </a>
-
-  <a
-    href="https://wa.me/919607020711"
-    class="flex-1 flex items-center justify-center gap-2 py-4 bg-green-600 text-white font-bold"
-  >
-    <i class="fa-brands fa-whatsapp"></i>
-    WhatsApp
-  </a>
-</div>
+<script>AOS.init({ once:true, duration:800 });</script>
 
 </body>
 </html>
-
-
-
