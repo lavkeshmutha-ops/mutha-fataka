@@ -323,3 +323,23 @@ h3[id] {
 .glow-gold {
   box-shadow: 0 0 30px rgba(250, 204, 21, 0.6);
 }
+/* Mobile CTA spacing fix */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 72px;
+  }
+}
+/* Store open glow */
+.store-open {
+  color: #16a34a;
+  text-shadow: 0 0 10px rgba(22, 163, 74, 0.6);
+}
+
+.store-open-dot {
+  background: #16a34a;
+  box-shadow: 0 0 12px rgba(22, 163, 74, 0.8);
+}
+
+.store-closed {
+  color: #dc2626;
+}
