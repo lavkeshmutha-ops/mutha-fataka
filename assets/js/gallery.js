@@ -30,22 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mediaContainer.innerHTML = "";
 
-    // IMAGE
     if (el.tagName === "IMG") {
       const img = document.createElement("img");
-      img.src = el.src;
+      img.src = el.currentSrc || el.src;
       img.alt = el.alt || "Gallery image";
       img.className = "lightbox-image";
       mediaContainer.appendChild(img);
     }
 
-    // VIDEO
     if (el.tagName === "VIDEO") {
       const video = document.createElement("video");
       video.src = el.currentSrc || el.src;
       video.controls = true;
       video.autoplay = true;
       video.playsInline = true;
+      video.muted = false;
       video.className = "lightbox-image";
       mediaContainer.appendChild(video);
     }
@@ -53,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.add("show");
     overlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    closeBtn.focus();
+
+    closeBtn?.focus();
   }
 
   function closeLightbox() {
@@ -67,20 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = -1;
     lightboxOpen = false;
 
-    if (lastFocusedEl) lastFocusedEl.focus();
+    lastFocusedEl?.focus();
   }
 
   function showNext() {
+    if (!galleryItems.length) return;
     openLightbox((currentIndex + 1) % galleryItems.length);
   }
 
   function showPrev() {
+    if (!galleryItems.length) return;
     openLightbox(
       (currentIndex - 1 + galleryItems.length) % galleryItems.length
     );
   }
 
-  // Open handlers
+  /* ===============================
+     OPEN HANDLERS
+     =============================== */
+
   galleryItems.forEach((item, index) => {
     item.tabIndex = 0;
 
@@ -115,9 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "ArrowLeft") showPrev();
   });
 
-
   /* ===============================
-     AUTOPLAY VIDEOS ON SCROLL (SAFE)
+     AUTOPLAY VIDEOS ON SCROLL
      =============================== */
 
   const galleryVideos = document.querySelectorAll(".gallery-video");
@@ -128,13 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
           const video = entry.target;
 
-          // Do not autoplay when lightbox is open
           if (lightboxOpen) {
             video.pause();
             return;
           }
 
-          if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
             video.muted = true;
             video.play().catch(() => {});
           } else {
@@ -142,13 +145,13 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: [0.6] }
+      { threshold: 0.6 }
     );
 
     galleryVideos.forEach(video => {
       videoObserver.observe(video);
 
-      // Allow user intent to unmute
+      // User intent: tap to unmute
       video.addEventListener("click", () => {
         video.muted = false;
       });
