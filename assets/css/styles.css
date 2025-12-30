@@ -269,3 +269,57 @@ h3[id] {
   opacity: 1;
   visibility: visible;
 }
+/* =========================
+   GALLERY VISIBILITY FIX
+   ========================= */
+
+#gallery,
+#gallery * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.gallery-item {
+  transform: none !important;
+}
+
+.gallery-img,
+.gallery-video {
+  display: block !important;
+  opacity: 1 !important;
+}
+/* =========================
+   FESTIVE HIGHLIGHTS
+   ========================= */
+
+.highlight-red {
+  color: #dc2626;
+  font-weight: 800;
+}
+
+.highlight-gold {
+  background: linear-gradient(135deg, #f59e0b, #facc15);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 900;
+}
+
+.highlight-green {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.highlight-blue {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* Glow emphasis */
+.glow-red {
+  box-shadow: 0 0 25px rgba(220, 38, 38, 0.55);
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px rgba(250, 204, 21, 0.6);
+}
