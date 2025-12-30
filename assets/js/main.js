@@ -160,3 +160,62 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+/* ===============================
+     Store Status Update
+     =============================== */
+function updateStoreStatus() {
+  const now = new Date();
+  const hour = now.getHours() + now.getMinutes() / 60;
+
+  const statusEl = document.getElementById("store-status");
+  const timeEl = document.getElementById("store-time");
+  const dotEl = document.getElementById("status-dot");
+
+  if (!statusEl || !timeEl || !dotEl) return;
+
+  if (hour >= 9.5 && hour < 22) {
+    statusEl.textContent = "Open Now";
+    statusEl.className = "store-open font-bold uppercase";
+    dotEl.className = "w-3 h-3 rounded-full store-open-dot";
+    timeEl.textContent = "Closes at 10:00 PM";
+  } else {
+    statusEl.textContent = "Closed Now";
+    statusEl.className = "store-closed font-bold uppercase";
+    dotEl.className = "w-3 h-3 rounded-full bg-gray-400";
+    timeEl.textContent = "Opens at 9:30 AM";
+  }
+}
+/* ===============================
+   FESTIVAL CTA AUTO SWAP
+   =============================== */
+(function () {
+  const now = new Date();
+  const month = now.getMonth(); // 0 = Jan
+  const day = now.getDate();
+
+  const contactHeading = document.querySelector("#contact h2");
+  const contactText = document.querySelector("#contact p");
+
+  if (!contactHeading || !contactText) return;
+
+  // Diwali season (Oct–Nov)
+  if (month === 9 || month === 10) {
+    contactHeading.innerHTML =
+      'Celebrate <span class="highlight-gold">Diwali</span> With Us';
+    contactText.textContent =
+      "Special Diwali collections, family packs, and festive offers available now.";
+  }
+
+  // New Year season (Dec 25 – Jan 5)
+  if (
+    (month === 11 && day >= 25) ||
+    (month === 0 && day <= 5)
+  ) {
+    contactHeading.innerHTML =
+      'Welcome the <span class="highlight-gold">New Year</span> in Style';
+    contactText.textContent =
+      "Ring in the New Year with spectacular fireworks and trusted quality.";
+  }
+})();
+
+
