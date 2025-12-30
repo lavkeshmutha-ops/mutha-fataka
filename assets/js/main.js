@@ -93,10 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             navLinks.forEach(link => {
-              link.classList.toggle(
-                "text-red-600 font-bold",
-                link.getAttribute("href") === `#${entry.target.id}`
-              );
+         const isActive =
+  link.getAttribute("href") === `#${entry.target.id}`;
+
+link.classList.toggle("text-red-600", isActive);
+link.classList.toggle("font-bold", isActive);
+
             });
           }
         });
